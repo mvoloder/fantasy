@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('general');
+    return view('choosesport');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
