@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('choosesport');
+    return view('nba');
 });
 
 Auth::routes();
