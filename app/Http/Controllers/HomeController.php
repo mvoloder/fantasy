@@ -23,6 +23,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('choosesport');
+    }
+
+    public function nba()
+    {
+        return view('nba');
+    }
+
+    public function CreateLeague()
+    {
+        return view('createLeague');
+    }
+
+    public function JoinLeague()
+    {
+
     }
 }
