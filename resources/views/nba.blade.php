@@ -7,8 +7,8 @@
         <h2>Create or join existing league</h2>
 
         <div class="btn-group btn-group-justified">
-            <a href="#" class="btn btn-primary">Create league</a>
-            <a href="#" class="btn btn-primary">Join league</a>
+            <a href="{{url('nba/createleague')}}" class="btn btn-primary">Create league</a>
+            <a href="{{url('nba/joinleague')}}" class="btn btn-primary">Join league</a>
         </div>
 
     </div>

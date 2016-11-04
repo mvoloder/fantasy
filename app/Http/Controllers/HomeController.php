@@ -33,11 +33,11 @@ class HomeController extends Controller
 
     public function CreateLeague()
     {
-        return view('createLeague');
+        return view('createleague');
     }
 
     public function JoinLeague()
     {
-
+        return view('joinleague');
     }
 }
