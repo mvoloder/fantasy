@@ -40,4 +40,9 @@ class HomeController extends Controller
     {
         return view('joinleague');
     }
+
+    public function team()
+    {
+        return view('team');
+    }
 }

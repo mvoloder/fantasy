@@ -18,4 +18,5 @@ Route::get('choosesport', 'HomeController@index');
 Route::get('nba', 'HomeController@nba');
 Route::get('nba/createleague', 'HomeController@CreateLeague');
 Route::get('nba/joinleague', 'HomeController@JoinLeague');
+Route::get('team', 'HomeController@team');
 

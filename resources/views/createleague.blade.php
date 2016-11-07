@@ -58,63 +58,63 @@
                                 <label for="roster_postitions" class="col-md-4 control-label">Select roster positions</label>
 
                                 <label class="col-xs-pull-2">PG</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="point_guard">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">SG</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="shooting_guard">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">G</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="guard">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">SF</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="small_forward">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">F</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="forward">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">PF</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="power_forward">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">C</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="center">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">Utility</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="utility">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
                                 </select>
 
                                 <label class="col-xs-pull-2">Bench</label>
-                                <select class="selectpicker">
+                                <select class="selectpicker" name="bench">
                                     <option>1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -131,6 +131,14 @@
                                     <option>1:15</option>
                                     <option>1:30</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Create
+                                    </button>
+                                </div>
                             </div>
 
                         </form>
