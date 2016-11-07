@@ -13,6 +13,7 @@ class LeagueSettings extends Model
         'league_password',
         'league_name',
         'number_of_teams',
+        'draft_time'
 
     ];
 }
