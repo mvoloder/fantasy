@@ -27,7 +27,7 @@ class LeagueTable extends Migration
             $table->integer('center');
             $table->integer('utility');
             $table->integer('bench');
-            $table->integer('draft_time');
+            $table->string('draft_time');
             $table->timestamps();
 
         });

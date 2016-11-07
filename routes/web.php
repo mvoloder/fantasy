@@ -13,10 +13,16 @@
 
 
 Auth::routes();
+Route::resource('nba', 'HomeController');
+Route::resource('createleague', 'LeagueController');
+Route::resource('teaminfo', 'TeamController');
+
 Route::get('/', 'HomeController@index');
 Route::get('choosesport', 'HomeController@index');
 Route::get('nba', 'HomeController@nba');
-Route::get('nba/createleague', 'HomeController@CreateLeague');
+//Route::get('nba/createleague', 'HomeController@CreateLeague');
 Route::get('nba/joinleague', 'HomeController@JoinLeague');
 Route::get('team', 'HomeController@team');
+
+
 

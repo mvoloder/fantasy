@@ -9,6 +9,7 @@ class League extends Model
     //mass assignable settings attributes
 
     protected $fillable = [
+
         'league_id',
         'league_name',
         'league_password',

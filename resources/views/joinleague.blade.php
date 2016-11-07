@@ -31,7 +31,8 @@
                                 <label for="league_password" class="col-md-4 control-label">League Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="league_password" type="password" class="form-control" name="league_password" required>
+                                    <input id="league_password" type="password" class="form-control"
+                                           name="league_password" required>
 
                                     @if($errors->has('league_password'))
                                         <span class="help-block">

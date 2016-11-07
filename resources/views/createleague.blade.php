@@ -8,7 +8,7 @@
                     <div class="panel-heading">Create a league</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{url('nba/createleague')}}">
+                        <form class="form-horizontal" role="form" method="POST" action="/createleague">
                             {{csrf_field() }}
 
                             <div class="form-group{{$errors->has('league_name') ? 'has-error' : ''}}">
@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label for="number_of_teams" class="col-md-4 control-label">Number of teams</label>
-                                <select class="selectpicker">
+                                <select name="number_of_teams" class="selectpicker">
                                     <option>4</option>
                                     <option>6</option>
                                     <option>8</option>
@@ -52,10 +52,16 @@
                                     <option>18</option>
                                     <option>20</option>
                                 </select>
+                                @if($errors->has('number_of_teams'))
+                                    <span class="help-block">
+                                            <strong>{{$errors->first('number_of_teams')}}</strong>
+                                        </span>
+                                @endif
                             </div>
 
                             <div class="form-horizontal">
-                                <label for="roster_postitions" class="col-md-4 control-label">Select roster positions</label>
+                                <label for="roster_postitions" class="col-md-4 control-label">Select roster
+                                    positions</label>
 
                                 <label class="col-xs-pull-2">PG</label>
                                 <select class="selectpicker" name="point_guard">
@@ -124,7 +130,7 @@
 
                             <div class="form-group">
                                 <label for="draft_time" class="col-md-4 control-label">Draft time</label>
-                                <select class="selectpicker">
+                                <select name="draft_time" class="selectpicker">
                                     <option>0:30</option>
                                     <option>0:45</option>
                                     <option>1:00</option>
@@ -136,7 +142,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        Create
+                                        Create League
                                     </button>
                                 </div>
                             </div>
