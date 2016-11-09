@@ -23,10 +23,8 @@ class LeagueController extends Controller
      */
     public function index()
     {
-        //$leagues = new League();
-        return view('createleague');
 
-
+        return view('joinleague');
     }
 
     /**
@@ -36,8 +34,7 @@ class LeagueController extends Controller
      */
     public function create(Request $request)
     {
-
-
+        //
     }
 
     /**
@@ -71,7 +68,7 @@ class LeagueController extends Controller
 
         if ($validator->fails()) {
             //var_dump($validator->errors());
-            return view('createleague');
+            return view('nba');
         } else {
 
             //instance of League model
@@ -90,6 +87,7 @@ class LeagueController extends Controller
             $leagues->utility = Input::get("utility");
             $leagues->bench = Input::get("bench");
             $leagues->draft_time = Input::get("draft_time");
+            $leagues->user_id = Input::get('user_id');
 
             //create new league
             $leagues->save();

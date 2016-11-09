@@ -10,7 +10,7 @@ class League extends Model
 
     protected $fillable = [
 
-        'league_id',
+        'id',
         'league_name',
         'league_password',
         'number_of_teams',
@@ -23,9 +23,17 @@ class League extends Model
         'center',
         'utility',
         'bench',
-        'draft_time'
+        'draft_time',
+        'user_id'
+
 
     ];
+
+
+    public  function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 
 
 }

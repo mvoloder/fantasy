@@ -4,17 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model
+class TeamSettings extends Model
 {
     protected $fillable = [
 
         'id',
+        'team_name',
         'user_id',
-        'league_id',
-        'yahoo_player_id'
-
+        'league_id'
     ];
-
 
     public function user()
     {
@@ -25,5 +23,6 @@ class Team extends Model
     {
         return $this->belongsTo('App\League', 'league_id');
     }
+
 
 }

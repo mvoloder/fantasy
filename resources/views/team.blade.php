@@ -8,7 +8,7 @@
                     <div class="panel-heading">Edit your team info</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form"  method="POST" action="/teaminfo">
+                        <form class="form-horizontal" role="form"  method="POST" action="/nba/team">
                         {{csrf_field()}}
 
                         <div class="form-group{{$errors->has('team_name') ? 'has-error' : ''}}">
@@ -40,6 +40,7 @@
                                     </button>
                                 </div>
                             </div>
+                            <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
 
                         </form>
                     </div>

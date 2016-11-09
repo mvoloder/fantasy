@@ -10,18 +10,18 @@
                     <div class="panel-body">
                         <p>Input your league ID and league password</p>
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{url('nba/joinleague')}}">
+                        <form class="form-horizontal" role="form" method="POST" action="/nba/createleague">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('league_id') ? 'has-error' : '' }}">
-                                <label for="league_id" class="col-md-4 control-label">League ID</label>
+                                <label for="league_name" class="col-md-4 control-label">League Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="league_id" type="text" class="form-control" name="league_id" required>
+                                    <input id="league_name" type="text" class="form-control" name="league_name" required>
 
-                                    @if($errors->has('league_id'))
+                                    @if($errors->has('league_name'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('league_id') }}</strong>
+                                            <strong>{{ $errors->first('league_name') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -41,6 +41,7 @@
                                     @endif
                                 </div>
                             </div>
+                            <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
 
                             <div class="form-group">
                                 <div class="col-md-push-8 col-md-offset-4">
@@ -49,6 +50,7 @@
                                     </button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

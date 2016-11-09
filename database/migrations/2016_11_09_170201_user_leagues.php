@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Teams extends Migration
+class UserLeagues extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class Teams extends Migration
      */
     public function up()
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('user_leagues', function(Blueprint $table){
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('team_name');
-            $table->string('slogan');
+            $table->integer('league_id');
             $table->timestamps();
 
         });
@@ -30,6 +29,6 @@ class Teams extends Migration
      */
     public function down()
     {
-        Schema::drop('teams');
+        Schema::drop('user_leagues');
     }
 }

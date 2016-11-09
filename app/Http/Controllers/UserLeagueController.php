@@ -3,17 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use App\Team;
-use Illuminate\Support\Facades\Validator;
 
-class TeamController extends Controller
+class UserLeagueController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +13,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('joinleague');
+        //
     }
 
     /**
@@ -29,7 +21,7 @@ class TeamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
     }
@@ -42,29 +34,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-
-            [
-                'team_name' => 'required',
-                'slogan' => 'required'
-            ]
-        );
-
-        if ($validator->fails()){
-            return view('joinleague');
-        } else {
-
-            $teams = new Team();
-
-            $teams->team_name = Input::get("team_name");
-            $teams->slogan = Input::get("slogan");
-            $teams->user_id = Input::get('user_id');
-
-            $teams->save();
-        }
-
-        return view('nba');
+        //
     }
 
     /**

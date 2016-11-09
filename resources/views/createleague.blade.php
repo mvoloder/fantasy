@@ -8,7 +8,7 @@
                     <div class="panel-heading">Create a league</div>
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="/createleague">
+                        <form class="form-horizontal" role="form" method="POST" action="/nba/createleague">
                             {{csrf_field() }}
 
                             <div class="form-group{{$errors->has('league_name') ? 'has-error' : ''}}">
@@ -139,6 +139,8 @@
                                 </select>
                             </div>
 
+                            <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
+
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
@@ -146,9 +148,9 @@
                                     </button>
                                 </div>
                             </div>
-
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
