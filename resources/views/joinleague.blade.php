@@ -8,12 +8,12 @@
                     <div class="panel-heading">Join league</div>
 
                     <div class="panel-body">
-                        <p>Input your league ID and league password</p>
+                        <p>Input your league NAME and league PASSWORD</p>
 
-                        <form class="form-horizontal" role="form" method="POST" action="/nba/createleague">
+                        <form class="form-horizontal" role="form" method="POST" action="/nba/joinleague">
                             {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('league_id') ? 'has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('league_name') ? 'has-error' : '' }}">
                                 <label for="league_name" class="col-md-4 control-label">League Name</label>
 
                                 <div class="col-md-6">

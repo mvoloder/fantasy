@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\League;
-use App\UserLeague;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
 
-class UserLeagueController extends Controller
+class TeamSettings extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,7 @@ class UserLeagueController extends Controller
      */
     public function index()
     {
-        return view('joinleague');  
+        return view('team');
     }
 
     /**
@@ -38,30 +35,22 @@ class UserLeagueController extends Controller
      */
     public function store(Request $request)
     {
-        //$leagues = League::all();
-        //$leagues->fill($request->all());
-
         $validator = Validator::make(
-            $request->all(), 
+            $request->all(),
             [
-                'league_name' => 'required',
-                'league_password' => 'required'
+                'team_name' => 'required'
             ]
         );
 
         if ($validator->fails()){
-
             return view('nba');
+        }else {
 
-        } else{
+            $teams = new TeamSettings();
 
-            $user_leagues = new UserLeague();
-
-            $user_leagues->league_name = Input::get('league_name');
-            $user_leagues->league_password = Input::get('league_password');
-
-            $user_leagues->save();
-
+            $teams->team_name = Input::get('team_name');
+            $teams->user_id = Input::get('user_id');
+            $teams->league_id = Input::get('league_id');
         }
     }
 

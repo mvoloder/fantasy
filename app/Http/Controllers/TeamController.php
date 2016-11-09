@@ -60,6 +60,7 @@ class TeamController extends Controller
             $teams->team_name = Input::get("team_name");
             $teams->slogan = Input::get("slogan");
             $teams->user_id = Input::get('user_id');
+            $teams->league_id = Input::get('league_id');
 
             $teams->save();
         }

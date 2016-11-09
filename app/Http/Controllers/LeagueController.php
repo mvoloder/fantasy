@@ -24,7 +24,7 @@ class LeagueController extends Controller
     public function index()
     {
 
-        return view('joinleague');
+        return view('createleague');
     }
 
     /**
@@ -67,8 +67,9 @@ class LeagueController extends Controller
         );
 
         if ($validator->fails()) {
-            //var_dump($validator->errors());
+
             return view('nba');
+
         } else {
 
             //instance of League model
