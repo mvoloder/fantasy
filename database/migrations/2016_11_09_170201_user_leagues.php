@@ -18,7 +18,7 @@ class UserLeagues extends Migration
             $table->integer('user_id');
             $table->integer('league_id');
             $table->string('league_password');
-            $table->string('league_name');
+            //$table->string('league_name');
             $table->timestamps();
 
         });

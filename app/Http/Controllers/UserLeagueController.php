@@ -38,13 +38,16 @@ class UserLeagueController extends Controller
      */
     public function store(Request $request)
     {
-        //$leagues = League::all();
-        //$leagues->fill($request->all());
+//        $leagues = League::all();
+//        $leagues->get('league_name');
+//        $leagues->get('league_password');
+//        $leagues->get('id');
+
 
         $validator = Validator::make(
             $request->all(),
             [
-                'league_name' => 'required',
+                'league_id' => 'required',
                 'league_password' => 'required'
             ]
         );
@@ -57,12 +60,16 @@ class UserLeagueController extends Controller
 
             $user_leagues = new UserLeague();
 
-            $user_leagues->league_name = Input::get('league_name');
+            //$user_leagues->league_name = Input::get('league_name');
             $user_leagues->league_password = Input::get('league_password');
+            $user_leagues->user_id = Input::get('user_id');
+            $user_leagues->league_id = Input::get('league_id');
 
             $user_leagues->save();
 
         }
+
+        return view('team', ['leagueId' => $user_leagues->league_id]);
     }
 
     /**

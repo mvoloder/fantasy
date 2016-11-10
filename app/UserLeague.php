@@ -12,7 +12,7 @@ class UserLeague extends Model
         'user_id',
         'league_id',
         'league_password',
-        'league_name'
+        //'league_name'
     ];
 
     public function user()
