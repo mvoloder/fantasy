@@ -17,7 +17,8 @@
                                 <label for="league_name" class="col-md-4 control-label">League Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="league_name" type="text" class="form-control" name="league_name" required>
+                                    <input id="league_name" type="text" class="form-control" name="league_name"
+                                           required>
 
                                     @if($errors->has('league_name'))
                                         <span class="help-block">

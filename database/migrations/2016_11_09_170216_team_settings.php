@@ -18,6 +18,7 @@ class TeamSettings extends Migration
             $table->string('team_name');
             $table->integer('user_id');
             $table->integer('league_id');
+            $table->timestamps();
         });
     }
 

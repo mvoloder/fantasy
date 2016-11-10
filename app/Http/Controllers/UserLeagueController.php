@@ -17,7 +17,7 @@ class UserLeagueController extends Controller
      */
     public function index()
     {
-        return view('joinleague');  
+        return view('joinleague');
     }
 
     /**
@@ -33,7 +33,7 @@ class UserLeagueController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,18 +42,18 @@ class UserLeagueController extends Controller
         //$leagues->fill($request->all());
 
         $validator = Validator::make(
-            $request->all(), 
+            $request->all(),
             [
                 'league_name' => 'required',
                 'league_password' => 'required'
             ]
         );
 
-        if ($validator->fails()){
+        if ($validator->fails()) {
 
             return view('nba');
 
-        } else{
+        } else {
 
             $user_leagues = new UserLeague();
 
@@ -68,7 +68,7 @@ class UserLeagueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +79,7 @@ class UserLeagueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,8 +90,8 @@ class UserLeagueController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -102,7 +102,7 @@ class UserLeagueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

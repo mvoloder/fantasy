@@ -95,7 +95,7 @@ class LeagueController extends Controller
 
         }
 
-        return view('team');
+        return view('team', ['leagueId' => $leagues->id]);
     }
 
     /**
