@@ -8,7 +8,7 @@
     <title>Invite</title>
 </head>
 <body>
-    <h3>League id and password</h3>
-        <p>{{$bizovac}}</p>
+<h3>League id and password</h3>
+<p>{{ $test }}</p>
 </body>
 </html>

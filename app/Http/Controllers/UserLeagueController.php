@@ -31,18 +31,12 @@ class UserLeagueController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Input and validate league id and password for entering the league
      */
     public function store(Request $request)
     {
-//        $leagues = League::all();
-//        $leagues->get('league_name');
-//        $leagues->get('league_password');
-//        $leagues->get('id');
-
 
         $validator = Validator::make(
             $request->all(),

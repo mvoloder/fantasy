@@ -26,9 +26,20 @@ class HomeController extends Controller
         return view('choosesport');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function sport()
     {
         return view('nba');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function invite()
+    {
+        return view('invite');
     }
 
 }

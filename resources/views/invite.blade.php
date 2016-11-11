@@ -4,19 +4,18 @@
 
 @section('content')
 
-    <form class="form-horizontal" role="form" method="POST" action="{{url('nba/team')}}">
-        {{csrf_field()}}
+    <h3 style="text-align:center;">Invite your friends via e-mail</h3>
 
-        <h3 style="text-align:center;">Invite your friends via e-mail</h3>
+    <div class="flex-center position-ref full-height">
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+        <form action="{{url('nba/team/invite')}}" method="POST">
+
 
             <input type="email" name="email" placeholder="mail address">
-            <input type="text" name="bizovac" placeholder="bizovac">
+            <input type="text" name="test" placeholder="test">
             <button type="submit">Send mail</button>
-
-        </div>
-    </form>
+            {{csrf_field()}}
+        </form>
+    </div>
 
 @endsection

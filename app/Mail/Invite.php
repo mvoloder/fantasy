@@ -12,21 +12,19 @@ class Invite extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $bizovac;
+    public $test;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($bizovac)
+    public function __construct($test)
     {
-        $this->bizovac= $bizovac;
+        $this->test = $test;
     }
 
     /**
-     * Build the message.
-     *
      * @return $this
      */
     public function build()
