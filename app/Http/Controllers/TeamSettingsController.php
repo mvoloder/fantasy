@@ -57,7 +57,7 @@ class TeamSettingsController extends Controller
             $teams->save();
         }
 
-        return view('nba');
+        return view('invite');
     }
 
     /**
