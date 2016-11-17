@@ -8,20 +8,20 @@ class PlayersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
+     * Run Player seeds
      * @return void
      */
     public function run()
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 5; $i++){
+        for ($i = 0; $i < 80; $i++) {
             DB::table('players')->insert([
                 'first_name' => $faker->firstNameMale,
                 'last_name' => $faker->lastName,
                 'position' => $faker->numberBetween($min = 1, $max = 5),
                 'points' => $faker->numberBetween($min = 5, $max = 40),
-                'rebounds' => $faker->numberBetween($min = 0, $max = 20),
+                'rebounds' => $faker->numberBetween($min = 0, $max = 15),
                 'assists' => $faker->numberBetween($min = 0, $max = 15),
                 'turnovers' => $faker->numberBetween($min = 0, $max = 10),
                 'blocks' => $faker->numberBetween($min = 0, $max = 12),

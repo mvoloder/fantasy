@@ -43,4 +43,9 @@ class HomeController extends Controller
         return view('invite');
     }
 
+    public function draft()
+    {
+        return view('draft.general');
+    }
+
 }
