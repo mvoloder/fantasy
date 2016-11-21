@@ -16,8 +16,8 @@ class Teams extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('team_name');
-            $table->string('slogan');
+            $table->integer('player_id');
+//            $table->integer('league_id');
             $table->timestamps();
 
         });

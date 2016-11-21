@@ -10,8 +10,8 @@ class Team extends Model
 
         'id',
         'user_id',
-        'league_id',
-        'yahoo_player_id'
+//        'league_id',
+        'player_id'
 
     ];
 
@@ -21,9 +21,14 @@ class Team extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    public function league()
+//    public function league()
+//    {
+//        return $this->belongsTo('App\League', 'league_id');
+//    }
+
+    public  function player()
     {
-        return $this->belongsTo('App\League', 'league_id');
+        return $this->belongsTo('App\Player', 'player_id');
     }
 
 }

@@ -64,31 +64,77 @@
 </head>
 <body>
 
-<div id="wrapper">
+<form class="form-horizontal" role="form" method="POST" action="/draft">
+    {{csrf_field()}}
 
-    <div id="banner">
-        {{--<h1 align="center" id="player">{{$player}}</h1>--}}
-    </div>
-    <div id="menuTop" align="center">
 
-    </div>
-    <div id="columnLeft">
-        <h3>Draft order :</h3>
-        @foreach($players as $player)
-            <li>{{$player->first_name}}</li>
-        @endforeach
-    </div>
-    <div id="columnRight">
-        <h3>Your picks :</h3>
-        @foreach($players as $player)
-            <li>{{$player->first_name}}</li>
-        @endforeach
-    </div>
-    <div id="content">
-        <h3 align="center">List of players to draft</h3>
-        <ol>
-            <table class="table table-bordered">
+
+    <div id="wrapper">
+
+        {{--BANNER--}}
+        <div id="banner">
+
+        </div>
+
+        {{--TOP MENUE--}}
+        <div id="menuTop">
+
+            <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-primary" name="draft_pick">
+                    Draft player
+                </button>
+            </div>
+        </div>
+
+        {{--LEFT COLUMN--}}
+        <div id="columnLeft">
+            <h3>Draft order :</h3>
+
+            <table class="table table-bordered" align="left">
                 <thead>
+                <tr>
+                    <th>Pick number</th>
+                </tr>
+                </thead>
+
+                {{--@foreach($arr as $ar)--}}
+                    {{--<tbody>--}}
+
+                    {{--@for($i = 0; $i < 4; $i++)--}}
+                        {{--@if( $i % 2 == 0)--}}
+                            {{--@for($j = 1; $j <= 4; $j++)--}}
+                                {{--<tr>--}}
+                                    {{--<td>{{$j}}</td>--}}
+                                {{--</tr>--}}
+                            {{--@endfor--}}
+                        {{--@else--}}
+                            {{--@for($j = 4; $j >= 1; $j--)--}}
+                                {{--<tr>--}}
+                                    {{--<td>{{$j}}</td>--}}
+                                {{--</tr>--}}
+                            {{--@endfor--}}
+                        {{--@endif--}}
+                    {{--@endfor--}}
+
+                    {{--</tbody>--}}
+                {{--@endforeach--}}
+
+            </table>
+
+        </div>
+
+        {{--RIGHT COLUMN--}}
+        <div id="columnRight">
+            <h3 align="center">Your picks :</h3>
+
+        </div>
+
+        {{--MAIN CONTENT--}}
+        <div id="content">
+            <h3 align="center">List of players to draft</h3>
+            <ol>
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
                         <th>Name</th>
                         <th>Field goal</th>
@@ -100,12 +146,14 @@
                         <th>Blocks</th>
                         <th>TOs</th>
                     </tr>
-                </thead>
+                    </thead>
 
-                @foreach($players as $player)
-                    <tbody>
+                    @foreach($players as $index =>$player)
+
+                        <tbody>
                         <tr>
-                            <td>{{$player->first_name . " " . $player->last_name}}</td>
+                            <td><label><input type="checkbox" name="player-{{$player->id}}">   {{$player->first_name . " " . $player->last_name}}
+                                </label></td>
                             <td>{{$player->field_goal}}</td>
                             <td>{{$player->free_throws}}</td>
                             <td>{{$player->points}}</td>
@@ -115,16 +163,24 @@
                             <td>{{$player->blocks}}</td>
                             <td>{{$player->turnovers}}</td>
                         </tr>
-                    </tbody>
-                @endforeach
-            </table>
-        </ol>
-    </div>
-    <div id="footer">
-        <h3 align="center">Good luck everybody</h3>
-    </div>
-</div>
+                        <input type="hidden" name="player_id" value={{$index}}>
+                        </tbody>
+                    @endforeach
 
+                </table>
+            </ol>
+        </div>
+
+        {{--FOOTER--}}
+        <div id="footer">
+            <h3 align="center">Good luck everybody</h3>
+        </div>
+    </div>
+    <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
+
+    {{--<input type="hidden" value="lid" name="lid">--}}
+
+</form>
 
 </body>
 </html>

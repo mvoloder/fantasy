@@ -88,6 +88,7 @@ class LeagueController extends Controller
             $leagues->bench = Input::get("bench");
             $leagues->draft_time = Input::get("draft_time");
             $leagues->user_id = Input::get('user_id');
+            $leagues->roster = ($leagues->point_guard + $leagues->shooting_guard + $leagues->guard + $leagues->small_forward + $leagues->forward + $leagues->power_forward + $leagues->center + $leagues->utility + $leagues->bench);
 
             //create new league
             $leagues->save();

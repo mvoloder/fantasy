@@ -23,11 +23,11 @@ class PlayersSeeder extends Seeder
                 'points' => $faker->numberBetween($min = 5, $max = 40),
                 'rebounds' => $faker->numberBetween($min = 0, $max = 15),
                 'assists' => $faker->numberBetween($min = 0, $max = 15),
-                'turnovers' => $faker->numberBetween($min = 0, $max = 10),
-                'blocks' => $faker->numberBetween($min = 0, $max = 12),
-                'steals' => $faker->numberBetween($min = 0, $max = 12),
-                'field_goal' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0, $max = 0.7),
-                'free_throws' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.3, $max = 1),
+                'turnovers' => $faker->numberBetween($min = 0, $max = 7),
+                'blocks' => $faker->numberBetween($min = 0, $max = 8),
+                'steals' => $faker->numberBetween($min = 0, $max = 8),
+                'field_goal' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.4, $max = 0.6),
+                'free_throws' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.5, $max = 0.95),
             ]);
         }
     }

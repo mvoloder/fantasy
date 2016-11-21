@@ -41,7 +41,7 @@ class UserLeagueController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'league_id' => 'required',
+                'league_id' => 'required|numeric',
                 'league_password' => 'required'
             ]
         );
@@ -59,7 +59,20 @@ class UserLeagueController extends Controller
             $user_leagues->user_id = Input::get('user_id');
             $user_leagues->league_id = Input::get('league_id');
 
-            $user_leagues->save();
+            $leagues = League::all();
+
+            foreach($leagues as $league){
+                $neki_id = $league->id;
+                $pass = $league->league_password;
+
+                if (($neki_id == $user_leagues->league_id) && ($pass == $user_leagues->league_password)){
+
+                    $user_leagues->save();
+                }
+
+
+            }
+
 
         }
 

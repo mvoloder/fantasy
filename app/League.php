@@ -24,6 +24,7 @@ class League extends Model
         'utility',
         'bench',
         'draft_time',
+        'roster',
         'user_id'
 
 

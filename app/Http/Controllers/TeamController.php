@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Team;
 use Illuminate\Support\Facades\Validator;
+use App\League;
+use App\Player;
 
 class TeamController extends Controller
 {
@@ -21,7 +23,18 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('joinleague');
+        $players = Player::all();
+        $leagues = League::all();
+
+        foreach ($leagues as $league){
+            $number_of_teams = $league->number_of_teams;
+//            $lid = $league->id;
+
+            $arr = range(1, $number_of_teams);
+            break;
+        }
+
+        return view('draft.general', compact('players', 'arr'));
     }
 
     /**
@@ -41,30 +54,26 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
 
-            [
-                'team_name' => 'required',
-                'slogan' => 'required'
-            ]
-        );
+        $teams = new Team();
 
-        if ($validator->fails()) {
-            return view('joinleague');
-        } else {
+        $inputs = $request->all();
+        foreach ($inputs as $key => $one)
+        {
+            if (strpos($key, 'player-') === 0) {
+                $playerId = substr($key, 7);
 
-            $teams = new Team();
-
-            $teams->team_name = Input::get("team_name");
-            $teams->slogan = Input::get("slogan");
-            $teams->user_id = Input::get('user_id');
-            $teams->league_id = Input::get('league_id');
-
-            $teams->save();
+                $teams->player_id = $playerId;
+            }
         }
 
-        return view('nba');
+        $teams->user_id = Input::get('user_id');
+//        $teams->league_id = Input::get('league_id');
+
+
+        $teams->save();
+
+        return redirect()->back();
     }
 
     /**
