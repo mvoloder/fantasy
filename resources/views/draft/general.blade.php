@@ -178,7 +178,7 @@
     </div>
     <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
 
-    {{--<input type="hidden" value="lid" name="lid">--}}
+    <input type="hidden" value="{{$leagueId}}" name="league_id">
 
 </form>
 

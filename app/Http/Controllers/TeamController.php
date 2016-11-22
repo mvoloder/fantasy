@@ -28,13 +28,13 @@ class TeamController extends Controller
 
         foreach ($leagues as $league){
             $number_of_teams = $league->number_of_teams;
-//            $lid = $league->id;
+            $leagueId = $league->id;
 
             $arr = range(1, $number_of_teams);
-            break;
+//            break;
         }
 
-        return view('draft.general', compact('players', 'arr'));
+        return view('draft.general', compact('players', 'arr', 'leagueId'));
     }
 
     /**
@@ -68,7 +68,7 @@ class TeamController extends Controller
         }
 
         $teams->user_id = Input::get('user_id');
-//        $teams->league_id = Input::get('league_id');
+        $teams->league_id = Input::get('league_id');
 
 
         $teams->save();

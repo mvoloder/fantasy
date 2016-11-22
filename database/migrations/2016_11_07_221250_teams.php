@@ -17,7 +17,7 @@ class Teams extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('player_id');
-//            $table->integer('league_id');
+            $table->integer('league_id');
             $table->timestamps();
 
         });
