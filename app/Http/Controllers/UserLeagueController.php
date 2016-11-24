@@ -54,7 +54,6 @@ class UserLeagueController extends Controller
 
             $user_leagues = new UserLeague();
 
-            //$user_leagues->league_name = Input::get('league_name');
             $user_leagues->league_password = Input::get('league_password');
             $user_leagues->user_id = Input::get('user_id');
             $user_leagues->league_id = Input::get('league_id');

@@ -97,27 +97,27 @@
                 </tr>
                 </thead>
 
-                {{--@foreach($arr as $ar)--}}
-                    {{--<tbody>--}}
+                @foreach($arr as $ar)
+                    <tbody>
 
-                    {{--@for($i = 0; $i < 4; $i++)--}}
-                        {{--@if( $i % 2 == 0)--}}
-                            {{--@for($j = 1; $j <= 4; $j++)--}}
-                                {{--<tr>--}}
-                                    {{--<td>{{$j}}</td>--}}
-                                {{--</tr>--}}
-                            {{--@endfor--}}
-                        {{--@else--}}
-                            {{--@for($j = 4; $j >= 1; $j--)--}}
-                                {{--<tr>--}}
-                                    {{--<td>{{$j}}</td>--}}
-                                {{--</tr>--}}
-                            {{--@endfor--}}
-                        {{--@endif--}}
-                    {{--@endfor--}}
+                    @for($i = 0; $i < 4; $i++)
+                        @if( $i % 2 == 0)
+                            @for($j = 1; $j <= 4; $j++)
+                                <tr>
+                                    <td>{{$j}}</td>
+                                </tr>
+                            @endfor
+                        @else
+                            @for($j = 4; $j >= 1; $j--)
+                                <tr>
+                                    <td>{{$j}}</td>
+                                </tr>
+                            @endfor
+                        @endif
+                    @endfor
 
-                    {{--</tbody>--}}
-                {{--@endforeach--}}
+                    </tbody>
+                @endforeach
 
             </table>
 
@@ -162,6 +162,7 @@
                             <td>{{$player->steals}}</td>
                             <td>{{$player->blocks}}</td>
                             <td>{{$player->turnovers}}</td>
+                            <td>{{$player}}</td>
                         </tr>
                         <input type="hidden" name="player_id" value={{$index}}>
                         </tbody>

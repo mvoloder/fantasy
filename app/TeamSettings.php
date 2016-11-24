@@ -21,7 +21,7 @@ class TeamSettings extends Model
 
     public function league()
     {
-        return $this->belongsTo('App\League', 'league_id');
+        return $this->hasMany('App\League', 'league_id');
     }
 
 
