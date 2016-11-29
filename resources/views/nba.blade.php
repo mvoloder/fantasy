@@ -17,6 +17,10 @@
 
         <h3>List of your leagues</h3>
 
+        {{--@foreach($team_settings as $team_setting)--}}
+            {{--{{$team_setting->team_name}}--}}
+            {{--@endforeach--}}
+
 
     </div>
 

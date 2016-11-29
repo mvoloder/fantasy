@@ -9,9 +9,10 @@ class Player extends Model
     protected $fillable = [
 
         'id',
-        'user_id',
-        'league_id',
-        'team_id',
+        'is_drafted',
+//        'user_id',
+//        'league_id',
+//        'team_id',
         'first_name',
         'last_name',
         'position',
@@ -22,7 +23,8 @@ class Player extends Model
         'blocks',
         'steals',
         'field_goal',
-        'free_throw'
+        'free_throw',
+
 
     ];
 

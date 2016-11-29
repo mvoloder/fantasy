@@ -80,7 +80,7 @@
         <div id="menuTop">
 
             <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-primary" name="draft_pick">
+                <button type="submit" class="btn">
                     Draft player
                 </button>
             </div>
@@ -127,13 +127,15 @@
         <div id="columnRight">
             <h3 align="center">Your picks :</h3>
 
+
+
         </div>
 
         {{--MAIN CONTENT--}}
         <div id="content">
             <h3 align="center">List of players to draft</h3>
             <ol>
-                <table class="table table-bordered">
+                <table class="table-bordered">
                     <thead>
                     <tr>
                         <th>Name</th>
@@ -152,6 +154,9 @@
 
                         <tbody>
                         <tr>
+                            {{--@if(isset($player->is_drafted))--}}
+                            @continue($player->is_drafted == true)
+
                             <td><label><input type="checkbox" name="player-{{$player->id}}">   {{$player->first_name . " " . $player->last_name}}
                                 </label></td>
                             <td>{{$player->field_goal}}</td>
@@ -162,9 +167,10 @@
                             <td>{{$player->steals}}</td>
                             <td>{{$player->blocks}}</td>
                             <td>{{$player->turnovers}}</td>
-                            <td>{{$player}}</td>
                         </tr>
                         <input type="hidden" name="player_id" value={{$index}}>
+
+                        {{--@endif--}}
                         </tbody>
                     @endforeach
 

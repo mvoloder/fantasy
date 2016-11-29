@@ -34,6 +34,7 @@ class TeamController extends Controller
 //            break;
         }
 
+
         return view('draft.general', compact('players', 'arr', 'leagueId'));
     }
 
@@ -71,7 +72,10 @@ class TeamController extends Controller
         $teams->league_id = Input::get('league_id');
 
 
+
         $teams->save();
+//        Player::find($playerId)->destroy($playerId);
+
 
         return redirect()->back();
     }

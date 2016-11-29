@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TeamSettings;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 

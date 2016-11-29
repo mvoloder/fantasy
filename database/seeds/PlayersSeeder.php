@@ -15,7 +15,7 @@ class PlayersSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 80; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             DB::table('players')->insert([
                 'first_name' => $faker->firstNameMale,
                 'last_name' => $faker->lastName,
