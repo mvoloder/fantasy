@@ -7,15 +7,12 @@
         <tr>
             {{--LEFT SIDE--}}
             <td align="center">
-                <a href="#demo" class="btn btn-info" data-toggle="collapse">Weeks</a> <br>
-                <div id="demo" class="collapse">
-                    @for($i = 0; $i < $smthn; $i++)
-                        {{$i + 1}} <br>
-                        @foreach($rounds[$i] as $round)
-                            <a href="#">{{$round}}</a><br>
-                        @endforeach
-                    @endfor
-                </div>
+                <form class="form-horizontal" role="form" method="get">
+                @foreach($tm_settings as $tm_setting)
+                    
+                    {{$tm_setting}} <br>
+                    @endforeach
+                </form>
             </td>
             <td class="divider">
 
@@ -23,7 +20,11 @@
 
             {{--RIGHT SIDE--}}
             <td align="center">
-
+                <form class="form-horizontal" role="form" method="get">
+                @foreach($tm_settings as $tm_setting)
+                    {{$tm_setting}} <br>
+                @endforeach
+                </form>
             </td>
         </tr>
     </table>
