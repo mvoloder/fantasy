@@ -25,6 +25,9 @@ Route::resource('nba/team', 'TeamSettingsController');
 Route::resource('team', 'MainLeagueController');
 Route::get('matchups', 'MatchupController@index');
 Route::get('matchup/{week}/{id}', 'MatchupController@matchup');
+Route::get('league', 'MatchupController@league');
+Route::get('messageboard', 'MatchupController@messageBoard');
+Route::get('standings', 'MatchupController@standings');
 /**
  * Send Invite mail
  */

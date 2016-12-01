@@ -27,7 +27,6 @@ class MatchupController extends Controller
         foreach ($teams as $team) {
             $teamNamesMap[$team->id] = $team->team_name;
         }
-        var_dump($teamNamesMap);
 
 
         //define total rounds and number of matches per round
@@ -68,6 +67,21 @@ class MatchupController extends Controller
 //        var_dump($tm_settings);
 
         return view('matchup', compact('tm_settings'));
+    }
+
+    public function league()
+    {
+        return view('league');
+    }
+
+    public function messageBoard()
+    {
+        return view('messageboard');
+    }
+
+    public function standings()
+    {
+        return view('standings');
     }
 
 }
