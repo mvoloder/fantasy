@@ -132,7 +132,7 @@
         </div>
 
         {{--MAIN CONTENT--}}
-        <div id="content">
+        <div id="content" align="center">
             <h3 align="center">List of players to draft</h3>
             <ol>
                 <table class="table-bordered">

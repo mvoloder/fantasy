@@ -7,16 +7,20 @@
         <tr>
             {{--LEFT SIDE--}}
             <td align="center">
-                @for($i = 0; $i < $smthn; $i++)
-                    {{$i +1}} <br>
-                    @foreach($rounds[$i] as $round)
-                        <a href="#">{{$round}}</a><br>
-                    @endforeach
-                @endfor
+                <a href="#demo" class="btn btn-info" data-toggle="collapse">Weeks</a> <br>
+                <div id="demo" class="collapse">
+                    @for($i = 0; $i < $smthn; $i++)
+                        {{$i + 1}} <br>
+                        @foreach($rounds[$i] as $round)
+                            <a href="#">{{$round}}</a><br>
+                        @endforeach
+                    @endfor
+                </div>
             </td>
             <td class="divider">
 
             </td>
+
             {{--RIGHT SIDE--}}
             <td align="center">
 
