@@ -55,7 +55,8 @@
                             <li><a href="/standings">Standings</a></li>
                             <li><a href="/matchups">Matchups</a></li>
                             <li><a href="/messageboard">Message Board</a></li>
-                            <li><a href="#">Players</a></li>
+                            <li><a href="/players">Players</a></li>
+                            <li><a href="/team">My Team</a></li>
                         </ul>
                     </div>
                 </ul>

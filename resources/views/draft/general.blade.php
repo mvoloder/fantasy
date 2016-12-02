@@ -154,6 +154,7 @@
 
                         <tbody>
                         <tr>
+                            {{--<input type="hidden" name="is_drafted" value="{{$player->is_drafted}}">--}}
                             {{--@if(isset($player->is_drafted))--}}
                             @continue($player->is_drafted == true)
 

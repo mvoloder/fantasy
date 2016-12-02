@@ -30,7 +30,7 @@ class MatchupController extends Controller
 
 
         //define total rounds and number of matches per round
-        $total_rounds = 6; //(fixed for now)
+        $total_rounds = 10; //(fixed for now)
         $matchesPerRound = $total_teams / 2;
         $rounds = array();
 
@@ -64,7 +64,6 @@ class MatchupController extends Controller
         foreach ($t_setts as $t_sett){
             $tm_settings [$t_sett->id] = $t_sett->team_name;
         }
-//        var_dump($tm_settings);
 
         return view('matchup', compact('tm_settings'));
     }
@@ -74,14 +73,24 @@ class MatchupController extends Controller
         return view('league');
     }
 
-    public function messageBoard()
-    {
-        return view('messageboard');
-    }
-
     public function standings()
     {
         return view('standings');
+    }
+
+    public function players()
+    {
+        $players = Player::all();
+
+        $undrafted = [];
+        foreach ($players as $player){
+            if($player->is_drafted == 0){
+                $undrafted[] = $player;
+            }
+        }
+//        var_dump($undrafted);
+
+        return view('players', compact('undrafted'));
     }
 
 }

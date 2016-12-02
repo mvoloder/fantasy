@@ -26,8 +26,9 @@ Route::resource('team', 'MainLeagueController');
 Route::get('matchups', 'MatchupController@index');
 Route::get('matchup/{week}/{id}', 'MatchupController@matchup');
 Route::get('league', 'MatchupController@league');
-Route::get('messageboard', 'MatchupController@messageBoard');
+Route::resource('messageboard', 'MessageBoardController');
 Route::get('standings', 'MatchupController@standings');
+Route::get('players', 'MatchupController@players');
 /**
  * Send Invite mail
  */
