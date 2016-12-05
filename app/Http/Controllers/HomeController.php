@@ -64,4 +64,10 @@ class HomeController extends Controller
         return view('draft.general');
     }
 
+    public function joinleague()
+    {
+        return view('joinleague');
+
+    }
+
 }

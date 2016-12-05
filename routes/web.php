@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index');
 Route::resource('draft', 'TeamController');
 Route::get('nba', 'HomeController@sport');
 Route::resource('nba/createleague', 'LeagueController');
+Route::get('nba/joinleague', 'HomeController@joinleague');
 Route::resource('nba/joinleague', 'UserLeagueController');
 Route::resource('nba/team', 'TeamSettingsController');
 Route::resource('team', 'MainLeagueController');

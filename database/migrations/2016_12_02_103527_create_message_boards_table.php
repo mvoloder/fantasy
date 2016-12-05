@@ -15,6 +15,7 @@ class CreateMessageBoardsTable extends Migration
     {
         Schema::create('message_boards', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('league_id');
             $table->text('topic');
             $table->text('message');
             $table->timestamps();

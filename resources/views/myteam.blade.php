@@ -6,7 +6,8 @@
     {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
     {{--<form class="form-horizontal" role="form" method="get" action="/myteam">--}}
         {{--{{csrf_field()}}--}}
-        <div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
             <h3 align="center">My team</h3>
             <ol>
                 <table class="table table-bordered">
@@ -43,6 +44,7 @@
                     </tbody>
                 </table>
             </ol>
+            </div>
         </div>
         <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
 
