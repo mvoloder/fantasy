@@ -88,7 +88,6 @@ class MatchupController extends Controller
                 $undrafted[] = $player;
             }
         }
-//        var_dump($undrafted);
 
         return view('players', compact('undrafted'));
     }

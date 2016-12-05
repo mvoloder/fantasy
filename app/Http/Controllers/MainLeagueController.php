@@ -19,7 +19,7 @@ class MainLeagueController extends Controller
      */
     public function index()
     {
-        //get current users id
+        //get current user's id
         $user = Auth::User()->id;
         $league = League::find(1);
         $league_id = $league->id;

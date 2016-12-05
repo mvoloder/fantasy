@@ -60,6 +60,8 @@ class UserLeagueController extends Controller
 
             $leagues = League::all();
 
+//            $leagueIds = [];
+
             foreach($leagues as $league){
                 $neki_id = $league->id;
                 $pass = $league->league_password;
@@ -69,8 +71,10 @@ class UserLeagueController extends Controller
                     $user_leagues->save();
                 }
 
+//                $leagueIds [] = $league->id;
 
             }
+//            var_dump($leagueIds);
 
 
         }

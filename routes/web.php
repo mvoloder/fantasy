@@ -14,9 +14,6 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index');
-
-
-
 Route::resource('draft', 'TeamController');
 Route::get('nba', 'HomeController@sport');
 Route::resource('nba/createleague', 'LeagueController');

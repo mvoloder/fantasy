@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\League;
 use App\TeamSettings;
+use App\User;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,11 +32,23 @@ class HomeController extends Controller
     }
 
     /**
+     * Get list of all user leagues
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sport()
     {
-        return view('nba');
+        //get current user's id
+        $user = Auth::User()->id;
+        $tm_sett = TeamSettings::all();
+
+        $user_leagues = [];
+        foreach ($tm_sett as $tm_set){
+            if($user == $tm_set->user_id){
+                $user_leagues[$tm_set->id] = $tm_set->team_name;
+            }
+        }
+
+        return view('nba', compact('user_leagues'));
     }
 
     /**
