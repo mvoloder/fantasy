@@ -12,6 +12,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <table class="table">
+
+                @for($i = 0; $i < count($drafted); $i++)
+                    {{$drafted[$i]}} <br>
+                    @endfor
                 <thead>
                     <th>#</th>
                     <th>Name</th>
@@ -26,21 +30,21 @@
                     <th>Turnovers</th>
                 </thead>
 
-                @foreach($undrafted as $und)
-                    <tr>
-                        <th>{{$und->id}}</th>
-                        <td>{{$und->first_name . " " . $und->last_name}}</td>
-                        <td>{{$und->position}}</td>
-                        <td>{{$und->field_goal}}</td>
-                        <td>{{$und->free_throws}}</td>
-                        <td>{{$und->points}}</td>
-                        <td>{{$und->rebounds}}</td>
-                        <td>{{$und->assists}}</td>
-                        <td>{{$und->steals}}</td>
-                        <td>{{$und->blocks}}</td>
-                        <td>{{$und->turnovers}}</td>
-                    </tr>
-                    @endforeach
+                {{--@foreach($undrafted as $und)--}}
+                    {{--<tr>--}}
+                        {{--<th>{{$und->id}}</th>--}}
+                        {{--<td>{{$und->first_name . " " . $und->last_name}}</td>--}}
+                        {{--<td>{{$und->position}}</td>--}}
+                        {{--<td>{{$und->field_goal}}</td>--}}
+                        {{--<td>{{$und->free_throws}}</td>--}}
+                        {{--<td>{{$und->points}}</td>--}}
+                        {{--<td>{{$und->rebounds}}</td>--}}
+                        {{--<td>{{$und->assists}}</td>--}}
+                        {{--<td>{{$und->steals}}</td>--}}
+                        {{--<td>{{$und->blocks}}</td>--}}
+                        {{--<td>{{$und->turnovers}}</td>--}}
+                    {{--</tr>--}}
+                    {{--@endforeach--}}
             </table>
         </div>
     </div>

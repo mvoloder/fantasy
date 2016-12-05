@@ -70,4 +70,9 @@ class HomeController extends Controller
 
     }
 
+    public function progress()
+    {
+        return view('inprogress');
+    }
+
 }

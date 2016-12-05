@@ -44,6 +44,7 @@
                 </tbody>
             </table>
         </div>
+        {{--<input type="hidden" value="{{$leagueId}}" name="league_id">--}}
     </div>
 
 

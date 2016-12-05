@@ -7,6 +7,7 @@ use App\Player;
 use App\Team;
 use App\TeamSettings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MatchupController extends Controller
 {
@@ -53,7 +54,7 @@ class MatchupController extends Controller
 
 
 
-        return view('matchups', compact('rounds', 'smthn', 'teamNamesMap', 'rnd'));
+        return view('matchups', compact('rounds', 'smthn', 'teamNamesMap'));
     }
 
     public function matchup()
@@ -81,15 +82,37 @@ class MatchupController extends Controller
     public function players()
     {
         $players = Player::all();
+        $teams = Team::all();
 
-        $undrafted = [];
+        $playersId = [];
         foreach ($players as $player){
-            if($player->is_drafted == 0){
-                $undrafted[] = $player;
-            }
+            $playersId[] = $player->id;
         }
+        var_dump($playersId);
 
-        return view('players', compact('undrafted'));
+        $teamsId = [];
+        foreach ($teams as $team){
+            $teamsId[] = $team->player_id;
+        }
+        var_dump($teamsId);
+
+
+
+//        $players = DB::table('players')->select('id');
+//        $teams = DB::table('teams')->select('player_id');
+
+        $drafted = array_intersect($teamsId, $playersId);
+        $undrafted = array_diff($playersId, $teamsId);
+
+        var_dump($drafted);
+        print_r($drafted);
+        var_dump($undrafted);
+        print_r($undrafted);
+
+
+
+
+        return view('players', compact('drafted'));
     }
 
 }
