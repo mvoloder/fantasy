@@ -25,17 +25,34 @@ class TeamController extends Controller
     {
         $players = Player::all();
         $leagues = League::all();
+        $teams = Team::all();
+
 
         foreach ($leagues as $league){
             $number_of_teams = $league->number_of_teams;
             $leagueId = $league->id;
 
             $arr = range(1, $number_of_teams);
-//            break;
         }
 
+        $playersId = [];
+        foreach ($players as $player){
+            $playersId[] = $player->id;
 
-        return view('draft.general', compact('players', 'arr', 'leagueId'));
+        }
+//        var_dump($playersId);
+
+        $teamsId = [];
+        foreach ($teams as $team){
+            $teamsId[] = $team->player_id;
+        }
+//        var_dump($teamsId);
+
+        $undrafted = array_diff($playersId, $teamsId);
+
+
+
+        return view('draft.general', compact('players', 'arr', 'leagueId', 'undrafted'));
     }
 
     /**

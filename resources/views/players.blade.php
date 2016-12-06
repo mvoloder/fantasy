@@ -13,9 +13,9 @@
         <div class="col-md-8 col-md-offset-2">
             <table class="table">
 
-                @for($i = 0; $i < count($drafted); $i++)
-                    {{$drafted[$i]}} <br>
-                    @endfor
+
+
+
                 <thead>
                     <th>#</th>
                     <th>Name</th>
@@ -29,22 +29,25 @@
                     <th>Blocks</th>
                     <th>Turnovers</th>
                 </thead>
-
-                {{--@foreach($undrafted as $und)--}}
-                    {{--<tr>--}}
-                        {{--<th>{{$und->id}}</th>--}}
-                        {{--<td>{{$und->first_name . " " . $und->last_name}}</td>--}}
-                        {{--<td>{{$und->position}}</td>--}}
-                        {{--<td>{{$und->field_goal}}</td>--}}
-                        {{--<td>{{$und->free_throws}}</td>--}}
-                        {{--<td>{{$und->points}}</td>--}}
-                        {{--<td>{{$und->rebounds}}</td>--}}
-                        {{--<td>{{$und->assists}}</td>--}}
-                        {{--<td>{{$und->steals}}</td>--}}
-                        {{--<td>{{$und->blocks}}</td>--}}
-                        {{--<td>{{$und->turnovers}}</td>--}}
-                    {{--</tr>--}}
-                    {{--@endforeach--}}
+                @foreach($undrafted as $value)
+                @foreach($players as $player)
+                    @if($value == $player->id)
+                    <tr>
+                        <th>{{$player->id}}</th>
+                        <td><button type="button" class="btn btn-primary">{{$player->position}}</button></td>
+                        <td>{{$player->first_name . " " . $player->last_name}}</td>
+                        <td>{{$player->field_goal}}</td>
+                        <td>{{$player->free_throws}}</td>
+                        <td>{{$player->points}}</td>
+                        <td>{{$player->rebounds}}</td>
+                        <td>{{$player->assists}}</td>
+                        <td>{{$player->steals}}</td>
+                        <td>{{$player->blocks}}</td>
+                        <td>{{$player->turnovers}}</td>
+                    </tr>
+                        @endif
+                @endforeach
+                @endforeach
             </table>
         </div>
     </div>

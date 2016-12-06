@@ -87,32 +87,26 @@ class MatchupController extends Controller
         $playersId = [];
         foreach ($players as $player){
             $playersId[] = $player->id;
+
         }
-        var_dump($playersId);
+//        var_dump($playersId);
 
         $teamsId = [];
         foreach ($teams as $team){
             $teamsId[] = $team->player_id;
         }
-        var_dump($teamsId);
+//        var_dump($teamsId);
 
 
-
-//        $players = DB::table('players')->select('id');
-//        $teams = DB::table('teams')->select('player_id');
-
-        $drafted = array_intersect($teamsId, $playersId);
+//        $drafted = array_intersect($teamsId, $playersId);
         $undrafted = array_diff($playersId, $teamsId);
 
-        var_dump($drafted);
-        print_r($drafted);
-        var_dump($undrafted);
-        print_r($undrafted);
+//        var_dump($drafted);
+//        print_r($drafted);
+//        var_dump($undrafted);
+//        print_r($undrafted);
 
-
-
-
-        return view('players', compact('drafted'));
+        return view('players', compact('undrafted', 'players'));
     }
 
 }

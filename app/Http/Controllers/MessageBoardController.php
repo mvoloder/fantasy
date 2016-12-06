@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\MessageBoard;
+use App\UserLeague;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -16,9 +17,10 @@ class MessageBoardController extends Controller
      */
     public function index()
     {
+//        $user_leagues = UserLeague::all();
         $messageBoards = MessageBoard::all();
 
-        return view('messageboard.messageboard', compact('messageBoards'));
+        return view('messageboard.messageboard', compact('messageBoards'))/*, ['leagueId' => $user_leagues->league_id]))*/;
     }
 
     /**

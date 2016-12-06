@@ -150,15 +150,12 @@
                     </tr>
                     </thead>
 
-                    @foreach($players as $index =>$player)
-
+                    @foreach($undrafted as $value)
+                    @foreach($players as $player)
+                        @if($value == $player->id)
                         <tbody>
                         <tr>
-                            {{--<input type="hidden" name="is_drafted" value="{{$player->is_drafted}}">--}}
-                            {{--@if(isset($player->is_drafted))--}}
-                            @continue($player->is_drafted == true)
-
-                            <td><label><input type="checkbox" name="player-{{$player->id}}">   {{$player->first_name . " " . $player->last_name}}
+                            <td><label><input type="checkbox" name="player-{{$player->id}}">{{$player->first_name . " " . $player->last_name}}
                                 </label></td>
                             <td>{{$player->field_goal}}</td>
                             <td>{{$player->free_throws}}</td>
@@ -169,12 +166,11 @@
                             <td>{{$player->blocks}}</td>
                             <td>{{$player->turnovers}}</td>
                         </tr>
-                        <input type="hidden" name="player_id" value={{$index}}>
-
-                        {{--@endif--}}
+                        {{--<input type="hidden" name="player_id" value={{$index}}>--}}
                         </tbody>
+                            @endif
                     @endforeach
-
+                    @endforeach
                 </table>
             </ol>
         </div>
