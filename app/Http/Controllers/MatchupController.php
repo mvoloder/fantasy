@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\DB;
 
 class MatchupController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display list of league's matchUps
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -57,6 +64,10 @@ class MatchupController extends Controller
         return view('matchups', compact('rounds', 'smthn', 'teamNamesMap'));
     }
 
+    /**
+     * Return matchup table
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function matchup()
     {
         $t_setts = TeamSettings::all();
@@ -69,16 +80,26 @@ class MatchupController extends Controller
         return view('matchup', compact('tm_settings'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function league()
     {
         return view('league');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function standings()
     {
         return view('standings');
     }
 
+    /**
+     * Return list of undrafted players
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function players()
     {
         $players = Player::all();
@@ -89,24 +110,18 @@ class MatchupController extends Controller
             $playersId[] = $player->id;
 
         }
-//        var_dump($playersId);
 
         $teamsId = [];
         foreach ($teams as $team){
             $teamsId[] = $team->player_id;
         }
-//        var_dump($teamsId);
 
-
-//        $drafted = array_intersect($teamsId, $playersId);
         $undrafted = array_diff($playersId, $teamsId);
 
-//        var_dump($drafted);
-//        print_r($drafted);
-//        var_dump($undrafted);
-//        print_r($undrafted);
 
         return view('players', compact('undrafted', 'players'));
     }
+
+
 
 }

@@ -17,9 +17,8 @@ class TeamController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Return viable players for draft
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -40,17 +39,13 @@ class TeamController extends Controller
             $playersId[] = $player->id;
 
         }
-//        var_dump($playersId);
 
         $teamsId = [];
         foreach ($teams as $team){
             $teamsId[] = $team->player_id;
         }
-//        var_dump($teamsId);
 
         $undrafted = array_diff($playersId, $teamsId);
-
-
 
         return view('draft.general', compact('players', 'arr', 'leagueId', 'undrafted'));
     }

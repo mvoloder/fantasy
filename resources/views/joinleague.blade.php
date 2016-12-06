@@ -45,7 +45,7 @@
                             <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
 
                             <div class="form-group">
-                                <div class="col-md-push-8 col-md-offset-4">
+                                <div class="col-md-push-8 col-md-offset-6">
                                     <button type="submit" class="btn btn-primary">
                                         Join
                                     </button>

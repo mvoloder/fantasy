@@ -49,14 +49,14 @@
                 <ul class="nav navbar-nav">
                     &nbsp;<div class="container-fluid">
                         <div class="navbar-header">
-                            <a class="navbar-brand" href="/league">Your league</a>
+                            <a class="navbar-brand">Your league</a>
                         </div>
                         <ul class="nav navbar-nav">
                             <li><a href="/standings">Standings</a></li>
+                            <li><a href="/team">My Team</a></li>
                             <li><a href="/matchups">Matchups</a></li>
                             <li><a href="/messageboard">Message Board</a></li>
                             <li><a href="/players">Players</a></li>
-                            <li><a href="/team">My Team</a></li>
                         </ul>
                     </div>
                 </ul>

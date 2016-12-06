@@ -17,6 +17,23 @@ class UserLeagueController extends Controller
      */
     public function index()
     {
+//        $leagues = League::all();
+////        $user_leagues = UserLeague::all();
+//
+//
+//        $check = [];
+//        foreach($leagues as $league){
+//            $check[] = $league->id;
+//            $check[] = $league->league_password;
+//        }
+//
+//        foreach ($check as $value){
+//            foreach ($leagues as $league){
+//
+//            }
+//        }
+
+
         return view('joinleague');
     }
 
@@ -58,28 +75,27 @@ class UserLeagueController extends Controller
             $user_leagues->user_id = Input::get('user_id');
             $user_leagues->league_id = Input::get('league_id');
 
-            $leagues = League::all();
-
-//            $leagueIds = [];
-
-            foreach($leagues as $league){
-                $neki_id = $league->id;
-                $pass = $league->league_password;
-
-                if (($neki_id == $user_leagues->league_id) && ($pass == $user_leagues->league_password)){
-
-                    $user_leagues->save();
-                }
-
-//                $leagueIds [] = $league->id;
-
-            }
-//            var_dump($leagueIds);
-
-
         }
-
+//
+//        $leagues = League::all();
+//
+//        $check = [];
+//        foreach($leagues as $league){
+//            $check[] = $league->id;
+//            $check[] = $league->league_password;
+//        }
+//
+//        foreach ($check as $value){
+//            foreach ($user_leagues as $user_league){
+//                for ($i = 0; $i < count($user_league); $i++){
+//                    if (($value == $user_league->league_id) && ($value == $user_league->league_password)){
+//
+//                    }
+//                }
+//            }
+//        }
         return view('team', ['leagueId' => $user_leagues->league_id]);
+
     }
 
     /**
