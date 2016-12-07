@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use App\League;
 use App\Player;
 use App\Team;
 use App\TeamSettings;
+use App\Week;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -60,7 +62,6 @@ class MatchupController extends Controller
         $smthn = count($rounds);
 
 
-
         return view('matchups', compact('rounds', 'smthn', 'teamNamesMap'));
     }
 
@@ -71,11 +72,50 @@ class MatchupController extends Controller
     public function matchup()
     {
         $t_setts = TeamSettings::all();
+        $weeks = Week::all();
+        $games = Game::all();
+        $teams = Team::all();
+        $players = Player::all();
+        $leagues = League::all();
 
+        $leaguesId = [];
+        foreach ($leagues as $league){
+            $leaguesId[] = $league->id;
+        }
+
+        //get all players by id
+        $playersId = [];
+        foreach ($players as $player){
+            $playersId[] = $player->id;
+        }
+
+        //get all players from games by id
+        $gamesId = [];
+        foreach ($games as $game){
+            $gamesId[$game->id] = $game->player_id;
+        }
+
+        //get all weeks by id
+        $weeksId = [];
+        foreach ($weeks as $week){
+            $weeksId[$week->id] = $week->games;
+        }
+
+        //get all team names
         $tm_settings = [];
         foreach ($t_setts as $t_sett){
             $tm_settings [$t_sett->id] = $t_sett->team_name;
         }
+
+        //get all drafted players from teams by id
+        $teamsId = [];
+        foreach ($teams as $team){
+            $teamsId[$team->user_id] = $team->player_id;
+        }
+
+        $nesto = array_intersect($gamesId, $teamsId, $teamsId);
+
+        var_dump($leaguesId, $gamesId, $weeksId, $tm_settings, $teamsId, $nesto);
 
         return view('matchup', compact('tm_settings'));
     }
@@ -108,7 +148,6 @@ class MatchupController extends Controller
         $playersId = [];
         foreach ($players as $player){
             $playersId[] = $player->id;
-
         }
 
         $teamsId = [];
