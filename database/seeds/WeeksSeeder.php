@@ -15,7 +15,7 @@ class WeeksSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for ($i = 0; $i < 10; $i++){
+        for ($i = 0; $i < 2; $i++){
             DB::table('weeks')->insert([
                'games' => $faker->numberBetween($min = 2, $max = 4),
             ]);

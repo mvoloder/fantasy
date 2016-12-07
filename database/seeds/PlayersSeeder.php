@@ -28,6 +28,8 @@ class PlayersSeeder extends Seeder
                 'steals' => $faker->numberBetween($min = 0, $max = 8),
                 'field_goal' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.4, $max = 0.6),
                 'free_throws' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.5, $max = 0.95),
+                'week_id' => $faker->numberBetween($min = 1, $max = 10),
+                'game_id' => $faker->numberBetween($min = 2, $max = 4),
             ]);
         }
     }

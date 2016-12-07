@@ -9,10 +9,6 @@ class Player extends Model
     protected $fillable = [
 
         'id',
-        'is_drafted',
-//        'user_id',
-//        'league_id',
-//        'team_id',
         'first_name',
         'last_name',
         'position',
@@ -24,7 +20,8 @@ class Player extends Model
         'steals',
         'field_goal',
         'free_throw',
-
+        'week_id',
+        'game_id',
 
     ];
 
@@ -41,6 +38,16 @@ class Player extends Model
     public  function team()
     {
         return $this->hasMany('App\Team', 'team_id', 'id');
+    }
+
+    public function week()
+    {
+        return $this->hasMany('App\Week', 'week_id');
+    }
+
+    public function game()
+    {
+        return $this->hasMany('App\Game', 'game_id');
     }
 
 }

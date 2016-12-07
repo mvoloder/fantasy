@@ -15,7 +15,6 @@ class Players extends Migration
     {
         Schema::create('players', function(Blueprint $table){
             $table->increments('id');
-            $table->boolean('is_drafted')->default(false);
 //            $table->integer('user_id')->nullable();
 //            $table->integer('league_id')->nullable();
 //            $table->integer('team_id')->nullable();
@@ -30,6 +29,8 @@ class Players extends Migration
             $table->integer('steals');
             $table->float('field_goal');
             $table->float('free_throws');
+            $table->integer('week_id');
+            $table->integer('game_id');
             $table->timestamps();
 
     });

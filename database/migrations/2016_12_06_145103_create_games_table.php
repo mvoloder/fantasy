@@ -23,6 +23,8 @@ class CreateGamesTable extends Migration
             $table->integer('steals');
             $table->float('field_goal');
             $table->float('free_throws');
+            $table->integer('week_id');
+            $table->integer('player_id');
             $table->timestamps();
         });
     }
