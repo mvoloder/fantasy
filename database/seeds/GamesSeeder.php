@@ -14,9 +14,11 @@ class GamesSeeder extends Seeder
     public function run()
     {
         $plr = 0;
+        $iD = [];
         $players = \App\Player::all();
         foreach ($players as $player) {
             $plr++;
+            $iD[] = $player->id;
         }
 
         $weeks = \App\Week::all();
@@ -29,7 +31,12 @@ class GamesSeeder extends Seeder
         $faker = Faker::create();
          foreach ($wks as $wk){
              $wkId++;
+             $j=0;
                  for ($i = 0; $i < ($plr * $wk); $i++) {
+                     if($j<$plr){
+                         $j++;
+                     }
+                     else $j=1;
                      DB::table('games')->insert([
                          'points' => $faker->numberBetween($min = 5, $max = 40),
                          'rebounds' => $faker->numberBetween($min = 0, $max = 15),
@@ -40,7 +47,7 @@ class GamesSeeder extends Seeder
                          'field_goal' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.4, $max = 0.6),
                          'free_throws' => $faker->randomFloat($nbMaxDecimals = 5, $min = 0.5, $max = 0.95),
                          'week_id' => $wkId,
-//                         'player_id' => $,
+                         'player_id' => $j,
                      ]);
               }
          }
