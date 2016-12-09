@@ -13,9 +13,10 @@ class CreateMatchupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('matchups', function (Blueprint $table) {
+        Schema::create('matchupss', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('league_id')->references('id')->on('leagues');
+            $table->integer('league_id')->unsigned();
+            $table->foreign('league_id')->references('id')->on('users');
             $table->integer('home_user_id');
             $table->integer('away_user_id');
             $table->float('fg');
@@ -39,6 +40,6 @@ class CreateMatchupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matchups');
+        Schema::dropIfExists('matchupss');
     }
 }

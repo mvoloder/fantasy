@@ -22,4 +22,9 @@ class Matchup extends Model
         'to',
         'score',
     ];
+
+    public function league()
+    {
+        return $this->belongsTo('App\League', 'league_id');
+    }
 }
