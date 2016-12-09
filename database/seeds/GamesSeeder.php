@@ -31,12 +31,12 @@ class GamesSeeder extends Seeder
         $faker = Faker::create();
          foreach ($wks as $wk){
              $wkId++;
-             $j=0;
+             $j = 0;
                  for ($i = 0; $i < ($plr * $wk); $i++) {
-                     if($j<$plr){
+                     if($j < $plr){
                          $j++;
                      }
-                     else $j=1;
+                     else $j = 1;
                      DB::table('games')->insert([
                          'points' => $faker->numberBetween($min = 5, $max = 40),
                          'rebounds' => $faker->numberBetween($min = 0, $max = 15),

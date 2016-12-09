@@ -7,6 +7,7 @@ use App\League;
 use App\Player;
 use App\Team;
 use App\TeamSettings;
+use App\User;
 use App\Week;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +19,6 @@ class MatchupController extends Controller
     {
         $this->middleware('auth');
     }
-
 
     /**
      * Display list of league's matchUps
@@ -33,14 +33,12 @@ class MatchupController extends Controller
         $total_teams = count($teams);
 
         $teamNamesMap = [];
-
         foreach ($teams as $team) {
             $teamNamesMap[$team->id] = $team->team_name;
         }
 
-
         //define total rounds and number of matches per round
-        $total_rounds = 10; //(fixed for now)
+        $total_rounds = 5; //(fixed for now)
         $matchesPerRound = $total_teams / 2;
         $rounds = array();
 
@@ -56,10 +54,12 @@ class MatchupController extends Controller
                 if ($match == 0) {
                     $away = $total_teams - 1;
                 }
-                $rounds[$round][$match] = $teamNamesMap[($home + 1)] . " vs " . $teamNamesMap[($away + 1)];
+                $rounds[$round][$match] = $teamNamesMap[($home + 1)] ."_vs_" . $teamNamesMap[($away + 1)];
             }
         }
+
         $smthn = count($rounds);
+
 
 
         return view('matchups', compact('rounds', 'smthn', 'teamNamesMap'));
@@ -77,6 +77,12 @@ class MatchupController extends Controller
         $teams = Team::all();
         $players = Player::all();
         $leagues = League::all();
+        $users = User::all();
+
+        $userIds = [];
+        foreach ($users as $user){
+            $userIds[] = $user->id;
+        }
 
         $leaguesId = [];
         foreach ($leagues as $league){
@@ -89,10 +95,11 @@ class MatchupController extends Controller
             $playersId[] = $player->id;
         }
 
+
         //get all players from games by id
         $gamesId = [];
         foreach ($games as $game){
-            $gamesId[$game->id] = $game->player_id;
+                $gamesId[$game->week_id][] = $game->player_id;
         }
 
         //get all weeks by id
@@ -104,20 +111,23 @@ class MatchupController extends Controller
         //get all team names
         $tm_settings = [];
         foreach ($t_setts as $t_sett){
-            $tm_settings [$t_sett->id] = $t_sett->team_name;
+            $tm_settings [] = $t_sett->team_name;
         }
+//        var_dump($tm_settings);
 
         //get all drafted players from teams by id
         $teamsId = [];
+        $tmNmsMp = [];
         foreach ($teams as $team){
-            $teamsId[$team->user_id] = $team->player_id;
+            $teamsId[] = $team->player_id;
+            $tmNmsMp[$team->id] = $team->name;
         }
 
-        $nesto = array_intersect($gamesId, $teamsId, $teamsId);
+        $teamPlayers = array_intersect($teamsId, $playersId);
 
-        var_dump($leaguesId, $gamesId, $weeksId, $tm_settings, $teamsId, $nesto);
 
-        return view('matchup', compact('tm_settings'));
+
+        return view('matchup', compact('t_setts', 'players', 'teams', 'teamPlayers', 'userIds', 'tmNmsMp'));
     }
 
     /**
@@ -160,7 +170,5 @@ class MatchupController extends Controller
 
         return view('players', compact('undrafted', 'players'));
     }
-
-
 
 }

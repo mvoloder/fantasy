@@ -11,8 +11,8 @@
                 <div id="week" class="collapse">
                     @for($i = 0; $i < $smthn; $i++)
                         {{$i + 1}} <br>
-                        @foreach($rounds[$i] as $round)
-                            <a href="matchup/{{$i+1}}/{{$round}}">{{$round}}</a><br>
+                        @foreach($rounds[$i] as $val => $round)
+                            <a href="matchup/{{$i+1}}/{{$val + 1}}">{{$round}}</a><br>
                         @endforeach
                     @endfor
                 </div>
@@ -27,5 +27,8 @@
             </td>
         </tr>
     </table>
+
+
+
 
 @endsection
