@@ -19,6 +19,12 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    {{-- on generate click message --}}
+    <script>
+        function myFunction() {
+            alert("Matchups Generated");
+        }
+    </script>
 </head>
 <body>
 <div id="app">
@@ -57,6 +63,7 @@
                             <li><a href="/matchups">Matchups</a></li>
                             <li><a href="/messageboard">Message Board</a></li>
                             <li><a href="/players">Players</a></li>
+                            <li><a onclick="myFunction()" href="/generate">Generate</a></li>
                         </ul>
                     </div>
                 </ul>

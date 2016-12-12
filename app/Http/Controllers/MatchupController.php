@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\League;
-use App\Matchup;
 use App\Player;
 use App\Team;
 use App\TeamSettings;
@@ -57,17 +56,7 @@ class MatchupController extends Controller
                 if ($match == 0) {
                     $away = $total_teams - 1;
                 }
-
-                //matchup model
-                $matchups = new Matchup();
-                $matchups->home_user_id = $home + 1;
-                $matchups->away_user_id = $away + 1;
-                $matchups->week = $round + 1;
-                $matchups->match = $match + 1;
-                $matchups->save();
-
-                $rounds[$round][$match] = $teamNamesMap[($home + 1)] ."_vs_" . $teamNamesMap[($away + 1)];
-
+                $rounds[$round][$match] = $teamNamesMap[($home + 1)] ." vs " . $teamNamesMap[($away + 1)];
             }
 
         }

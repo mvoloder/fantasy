@@ -15,6 +15,7 @@
 Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('sport', 'HomeController@progress');
+Route::get('generate', 'HomeController@generate');
 Route::resource('draft', 'TeamController');
 Route::get('nba', 'HomeController@sport');
 Route::resource('nba/createleague', 'LeagueController');
@@ -28,6 +29,8 @@ Route::get('league', 'MatchupController@league');
 Route::resource('messageboard', 'MessageBoardController');
 Route::get('standings', 'MatchupController@standings');
 Route::get('players', 'MatchupController@players');
+
+
 /**
  * Send Invite mail
  */

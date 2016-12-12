@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 
+use App\Matchup;
+
 class HomeController extends Controller
 {
     /**
@@ -73,6 +75,47 @@ class HomeController extends Controller
     public function progress()
     {
         return view('inprogress');
+    }
+
+    public function generate()
+    {
+
+        $teams = TeamSettings::where('league_id', 1)->get();
+
+        //get exact number of teams in the league
+        $total_teams = count($teams);
+        //define total rounds and number of matches per round
+        $total_rounds = 5; //(fixed for now)
+        $matchesPerRound = $total_teams / 2;
+        $rounds = array();
+
+        //generate fixtures
+        for ($i = 0; $i < $total_rounds; $i++) {
+            $rounds[$i] = array();
+        }
+        for ($round = 0; $round < $total_rounds; $round++) {
+            for ($match = 0; $match < $matchesPerRound; $match++) {
+                $home = ($round + $match) % ($total_teams - 1);
+                $away = ($total_teams - 1 - $match + $round) % ($total_teams - 1);
+                if ($match == 0) {
+                    $away = $total_teams - 1;
+                }
+
+                //matchup model
+                $matchups = new Matchup();
+                $matchups->home_user_id = $home + 1;
+                $matchups->away_user_id = $away + 1;
+                $matchups->week = $round + 1;
+                $matchups->match = $match + 1;
+                $matchups->save();
+
+//                $rounds[$round][$match] = $teamNamesMap[($home + 1)] ."_vs_" . $teamNamesMap[($away + 1)];
+
+            }
+
+        }
+
+        return redirect()->back();
     }
 
 }
