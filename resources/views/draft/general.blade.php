@@ -127,7 +127,18 @@
         <div id="columnRight">
             <h3 align="center">Your picks :</h3>
 
+            <table class="table">
 
+                <tbody>
+                @foreach($spiller as $spill)
+                    <tr>
+                        <ol>
+                        <td><li>{{$spill->first_name . " " . $spill->last_name}}</li></td>
+                        </ol>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
 
         </div>
 

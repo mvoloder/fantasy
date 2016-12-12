@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Team;
 use Illuminate\Support\Facades\Validator;
@@ -22,11 +23,15 @@ class TeamController extends Controller
      */
     public function index()
     {
+        $user = Auth::User()->id;
+        $leagueMap = League::find(1);
+        $leagueMapId = $leagueMap->id;
+
         $players = Player::all();
         $leagues = League::all();
         $teams = Team::all();
 
-
+        //output available players for draft
         foreach ($leagues as $league){
             $number_of_teams = $league->number_of_teams;
             $leagueId = $league->id;
@@ -47,7 +52,18 @@ class TeamController extends Controller
 
         $undrafted = array_diff($playersId, $teamsId);
 
-        return view('draft.general', compact('players', 'arr', 'leagueId', 'undrafted'));
+        //output users picks
+        $teamMappings = Team::where('user_id', $user)->where('league_id', $leagueMapId)->get();
+        $playerIds = [];
+        foreach ($teamMappings as $teamMapping){
+            $playerIds[] = $teamMapping->player_id;
+        }
+
+
+        $spiller = Player::whereIn('id', $playerIds)->get();
+
+
+        return view('draft.general', compact('players', 'arr', 'leagueId', 'undrafted', 'spiller'));
     }
 
     /**
@@ -86,7 +102,6 @@ class TeamController extends Controller
 
 
         $teams->save();
-//        Player::find($playerId)->destroy($playerId);
 
 
         return redirect()->back();

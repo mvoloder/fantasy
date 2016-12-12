@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\League;
+use App\Matchup;
 use App\Player;
 use App\Team;
 use App\TeamSettings;
@@ -29,6 +30,7 @@ class MatchupController extends Controller
         $teams = TeamSettings::where('league_id', 1)->get();
 
 
+
         //get exact number of teams in the league
         $total_teams = count($teams);
 
@@ -47,6 +49,7 @@ class MatchupController extends Controller
             $rounds[$i] = array();
         }
 
+
         for ($round = 0; $round < $total_rounds; $round++) {
             for ($match = 0; $match < $matchesPerRound; $match++) {
                 $home = ($round + $match) % ($total_teams - 1);
@@ -54,8 +57,19 @@ class MatchupController extends Controller
                 if ($match == 0) {
                     $away = $total_teams - 1;
                 }
+
+                //matchup model
+                $matchups = new Matchup();
+                $matchups->home_user_id = $home + 1;
+                $matchups->away_user_id = $away + 1;
+                $matchups->week = $round + 1;
+                $matchups->match = $match + 1;
+                $matchups->save();
+
                 $rounds[$round][$match] = $teamNamesMap[($home + 1)] ."_vs_" . $teamNamesMap[($away + 1)];
+
             }
+
         }
 
         $smthn = count($rounds);
@@ -113,7 +127,7 @@ class MatchupController extends Controller
         foreach ($t_setts as $t_sett){
             $tm_settings [] = $t_sett->team_name;
         }
-//        var_dump($tm_settings);
+
 
         //get all drafted players from teams by id
         $teamsId = [];
@@ -135,7 +149,9 @@ class MatchupController extends Controller
      */
     public function league()
     {
-        return view('league');
+        $league = League::find(1);
+        $league_id = $league->id;
+        return view('league', compact('league_id'));
     }
 
     /**

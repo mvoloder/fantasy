@@ -9,7 +9,9 @@ class Matchup extends Model
     protected $fillable = [
 
         'id',
-        'league_id',
+//        'league_id',
+        'week',
+        'match',
         'home_user_id',
         'away_user_id',
         'fg',
@@ -20,11 +22,12 @@ class Matchup extends Model
         'st',
         'blk',
         'to',
-        'score',
+        'home_score',
+        'away_score',
     ];
 
-    public function league()
-    {
-        return $this->belongsTo('App\League', 'league_id');
-    }
+//    public function league()
+//    {
+//        return $this->belongsTo('App\League', 'league_id');
+//    }
 }

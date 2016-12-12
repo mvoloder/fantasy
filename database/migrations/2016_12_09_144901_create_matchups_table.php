@@ -13,22 +13,24 @@ class CreateMatchupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('matchupss', function (Blueprint $table) {
+        Schema::create('matchups', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('league_id')->unsigned();
-            $table->foreign('league_id')->references('id')->on('users');
+//            $table->integer('league_id');
+//            $table->foreign('league_id')->references('id')->on('users');
             $table->integer('home_user_id');
             $table->integer('away_user_id');
-            $table->float('fg');
-            $table->float('ft');
-            $table->integer('pts');
-            $table->integer('reb');
-            $table->integer('ast');
-            $table->integer('st');
-            $table->integer('blk');
-            $table->integer('to');
-            $table->integer('home_score');
-            $table->integer('away_score');
+            $table->integer('week')->default(0);
+            $table->integer('match')->default(0);
+            $table->float('fg')->default(0);
+            $table->float('ft')->default(0);
+            $table->integer('pts')->default(0);
+            $table->integer('reb')->default(0);
+            $table->integer('ast')->default(0);
+            $table->integer('st')->default(0);
+            $table->integer('blk')->default(0);
+            $table->integer('to')->default(0);
+            $table->integer('home_score')->default(0);
+            $table->integer('away_score')->default(0);
             $table->timestamps();
         });
     }
@@ -40,6 +42,6 @@ class CreateMatchupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matchupss');
+        Schema::dropIfExists('matchups');
     }
 }

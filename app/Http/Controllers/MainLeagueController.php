@@ -30,7 +30,6 @@ class MainLeagueController extends Controller
         $playerIds = [];
         foreach ($teamMappings as $mapping) {
             $playerIds[] = $mapping->player_id;
-
         }
 
         $players = Player::whereIn('id', $playerIds)->get();
