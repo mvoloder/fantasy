@@ -121,14 +121,14 @@
                                             {{--Home team--}}
 
                                             <td>{{$player->first_name . " " . $player->last_name}}</td>
-                                            <td>{{$player->field_goal}}</td>
-                                            <td>{{$player->free_throws}}</td>
-                                            <td>{{$player->points}}</td>
-                                            <td>{{$player->rebounds}}</td>
-                                            <td>{{$player->assists}}</td>
-                                            <td>{{$player->steals}}</td>
-                                            <td>{{$player->blocks}}</td>
-                                            <td>{{$player->turnovers}}</td>
+                                            <td>{{$matchup->h_fg}}</td>
+                                            <td>{{$matchup->h_ft}}</td>
+                                            <td>{{$matchup->h_pts}}</td>
+                                            <td>{{$matchup->h_reb}}</td>
+                                            <td>{{$matchup->h_ast}}</td>
+                                            <td>{{$matchup->h_st}}</td>
+                                            <td>{{$matchup->h_blk}}</td>
+                                            <td>{{$matchup->h_to}}</td>
                                         </tr>
                                     @endif
                                 @endforeach
@@ -165,14 +165,14 @@
                                             {{--Away team--}}
 
                                             <td>{{$player->first_name . " " . $player->last_name}}</td>
-                                            <td>{{$player->field_goal}}</td>
-                                            <td>{{$player->free_throws}}</td>
-                                            <td>{{$player->points}}</td>
-                                            <td>{{$player->rebounds}}</td>
-                                            <td>{{$player->assists}}</td>
-                                            <td>{{$player->steals}}</td>
-                                            <td>{{$player->blocks}}</td>
-                                            <td>{{$player->turnovers}}</td>
+                                            <td>{{$matchup->a_fg}}</td>
+                                            <td>{{$matchup->a_ft}}</td>
+                                            <td>{{$matchup->a_pts}}</td>
+                                            <td>{{$matchup->a_reb}}</td>
+                                            <td>{{$matchup->a_ast}}</td>
+                                            <td>{{$matchup->a_st}}</td>
+                                            <td>{{$matchup->a_blk}}</td>
+                                            <td>{{$matchup->a_to}}</td>
                                         </tr>
                                     @endif
                                     @endforeach

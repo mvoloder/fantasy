@@ -90,6 +90,7 @@ class MatchupController extends Controller
         $teams = Team::all();
         $players = Player::all();
         $matchups = Matchup::all();
+        $t_setts = TeamSettings::all();
 
         //get all drafted players by user id
         $userMaps = [];
@@ -115,7 +116,7 @@ class MatchupController extends Controller
 
 
 
-        return view('matchup', compact('players','userMaps', 'matchups', 'round', 'match', 'teams'));
+        return view('matchup', compact('players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts'));
     }
 
     /**
