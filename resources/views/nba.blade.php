@@ -19,7 +19,7 @@
 
             @foreach($user_leagues as $user_league)
                 <ol>
-                <li><a href="/league"><button type="button" class="btn btn-defautl">{{$user_league}}</button></a></li>
+                <li><a href="/league"><button type="button" class="btn btn-default btn-primary">{{$user_league}}</button></a></li>
                 </ol>
             @endforeach
         </div>

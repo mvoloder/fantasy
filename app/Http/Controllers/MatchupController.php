@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\League;
+use App\Matchup;
 use App\Player;
 use App\Team;
 use App\TeamSettings;
@@ -11,6 +12,7 @@ use App\User;
 use App\Week;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Route;
 
 class MatchupController extends Controller
 {
@@ -26,9 +28,14 @@ class MatchupController extends Controller
      */
     public function index()
     {
+
         $teams = TeamSettings::where('league_id', 1)->get();
+        $weeks = Week::all();
 
-
+        $total_weeks = [];
+        foreach ($weeks as $week){
+            $total_weeks[] = $week->id;
+        }
 
         //get exact number of teams in the league
         $total_teams = count($teams);
@@ -61,76 +68,54 @@ class MatchupController extends Controller
 
         }
 
+
         $smthn = count($rounds);
 
 
 
-        return view('matchups', compact('rounds', 'smthn', 'teamNamesMap'));
+        return view('matchups', compact('rounds', 'smthn', 'teamNamesMap', 'weeks'));
     }
 
     /**
      * Return matchup table
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function matchup()
+    public function matchup(Request $request)
     {
-        $t_setts = TeamSettings::all();
-        $weeks = Week::all();
-        $games = Game::all();
+        //fetch route params
+        $round = Route::current()->getParameter('week');
+        $match = Route::current()->getParameter('match');
+
+
         $teams = Team::all();
         $players = Player::all();
-        $leagues = League::all();
-        $users = User::all();
+        $matchups = Matchup::all();
 
-        $userIds = [];
-        foreach ($users as $user){
-            $userIds[] = $user->id;
-        }
-
-        $leaguesId = [];
-        foreach ($leagues as $league){
-            $leaguesId[] = $league->id;
-        }
-
-        //get all players by id
-        $playersId = [];
-        foreach ($players as $player){
-            $playersId[] = $player->id;
-        }
-
-
-        //get all players from games by id
-        $gamesId = [];
-        foreach ($games as $game){
-                $gamesId[$game->week_id][] = $game->player_id;
-        }
-
-        //get all weeks by id
-        $weeksId = [];
-        foreach ($weeks as $week){
-            $weeksId[$week->id] = $week->games;
-        }
-
-        //get all team names
-        $tm_settings = [];
-        foreach ($t_setts as $t_sett){
-            $tm_settings [] = $t_sett->team_name;
-        }
-
-
-        //get all drafted players from teams by id
-        $teamsId = [];
-        $tmNmsMp = [];
+        //get all drafted players by user id
+        $userMaps = [];
         foreach ($teams as $team){
-            $teamsId[] = $team->player_id;
-            $tmNmsMp[$team->id] = $team->name;
+            $userMaps[$team->user_id][] = $team->player_id;
+        }
+//        var_dump($userMaps);
+
+        $playerIds = [];
+        foreach ($players as $player){
+            $playerIds[] = $player->id;
         }
 
-        $teamPlayers = array_intersect($teamsId, $playersId);
+
+        foreach ($matchups as $matchup){
+//            $matchIds[] = $matchup->match;
+//            $weekIds[] = $matchup->week;
+            if (($round == $matchup->week) && ($match == $matchup->match)){
+
+            }
+        }
 
 
 
-        return view('matchup', compact('t_setts', 'players', 'teams', 'teamPlayers', 'userIds', 'tmNmsMp'));
+
+        return view('matchup', compact('players','userMaps', 'matchups', 'round', 'match', 'teams'));
     }
 
     /**

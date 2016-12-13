@@ -109,8 +109,6 @@ class HomeController extends Controller
                 $matchups->match = $match + 1;
                 $matchups->save();
 
-//                $rounds[$round][$match] = $teamNamesMap[($home + 1)] ."_vs_" . $teamNamesMap[($away + 1)];
-
             }
 
         }
