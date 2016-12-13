@@ -91,6 +91,8 @@ class MatchupController extends Controller
         $players = Player::all();
         $matchups = Matchup::all();
         $t_setts = TeamSettings::all();
+        $weeks = Week::all();
+
 
         //get all drafted players by user id
         $userMaps = [];
@@ -113,10 +115,13 @@ class MatchupController extends Controller
             }
         }
 
+        $gamesId = [];
+        foreach ($weeks as $week){
+            $gamesId[] = $week->games;
+        }
+        var_dump($gamesId);
 
-
-
-        return view('matchup', compact('players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts'));
+        return view('matchup', compact('gamesId', 'weeks', 'players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts'));
     }
 
     /**
