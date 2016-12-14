@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\MessageBoard;
-use App\UserLeague;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
 
-class MessageBoardController extends Controller
+class StandingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +13,7 @@ class MessageBoardController extends Controller
      */
     public function index()
     {
-//        $user_leagues = UserLeague::all();
-        $messageBoards = MessageBoard::all();
-
-        return view('messageboard.messageboard', compact('messageBoards'))/*, ['leagueId' => $user_leagues->league_id]))*/;
+        //
     }
 
     /**
@@ -30,7 +23,7 @@ class MessageBoardController extends Controller
      */
     public function create()
     {
-        return view('messageboard.create');
+        //
     }
 
     /**
@@ -41,28 +34,7 @@ class MessageBoardController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'topic' => 'required | max:50',
-                'message' => 'required | max:255'
-            ]
-        );
-
-        if ($validator->fails()){
-            return view('league');
-        }else{
-            $messageBoard = new MessageBoard();
-
-            $messageBoard->topic = Input::get('topic');
-            $messageBoard->message = Input::get('message');
-
-            $messageBoard->save();
-        }
-
-        return redirect()->route('messageboard.show', $messageBoard->id);
-
-
+        //
     }
 
     /**
@@ -73,8 +45,7 @@ class MessageBoardController extends Controller
      */
     public function show($id)
     {
-        $messageBoard = MessageBoard::find($id);
-        return view('messageboard.show', compact('messageBoard'));
+        //
     }
 
     /**

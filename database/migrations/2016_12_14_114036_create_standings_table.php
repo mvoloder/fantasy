@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessageBoardsTable extends Migration
+class CreateStandingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateMessageBoardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('message_boards', function (Blueprint $table) {
+        Schema::create('standings', function (Blueprint $table) {
             $table->increments('id');
-//            $table->integer('league_id');
-            $table->text('topic');
-            $table->text('message');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateMessageBoardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message_boards');
+        Schema::dropIfExists('standings');
     }
 }
