@@ -63,7 +63,7 @@ class TeamController extends Controller
         $spiller = Player::whereIn('id', $playerIds)->get();
 
 
-        return view('draft.general', compact('players', 'arr', 'leagueId', 'undrafted', 'spiller'));
+        return view('draft.draft', compact('players', 'arr', 'leagueId', 'undrafted', 'spiller'));
     }
 
     /**

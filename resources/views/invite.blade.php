@@ -15,6 +15,12 @@
             <input type="text" name="test" placeholder="test">
             <button type="submit">Send mail</button>
             {{csrf_field()}}
+
+            <div class="container">
+                <p>Go main menu</p>
+                <hr>
+                <a href="/"><button class="btn btn-primary" type="button">Done</button></a>
+            </div>
         </form>
     </div>
 

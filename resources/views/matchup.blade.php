@@ -8,7 +8,7 @@
             @foreach($weeks as $week)
                 @if($week->id == $round)
                     @for($i = 0; $i < ($week->games); $i++)
-                        <button class="btn btn-primary" type="button" id="gameId">Simulate game {{$i}}</button>
+                        <button class="btn btn-primary" type="button" id="gameId">Simulate game {{$i + 1}}</button>
                     @endfor
                 @endif
             @endforeach
@@ -21,10 +21,10 @@
                 <table class="table table-hover">
                     <thead>
                     @foreach($t_setts as $t_sett)
-                        @if($t_sett->user_id == $matchup->home_user_id)
+                        @if($matchup->home_user_id ==$t_sett->user_id)
                             <tr>
                                 <th><h2>{{$t_sett->team_name}}</h2></th>
-                                @elseif($t_sett->user_id == $matchup->away_user_id)
+                                @elseif($matchup->away_user_id == $t_sett->user_id )
                                     <th><h2>{{$t_sett->team_name}}</h2></th>
                             </tr>
                         @endif
@@ -69,6 +69,7 @@
                                                 <td>{{$matchup->h_st}}</td>
                                                 <td>{{$matchup->h_blk}}</td>
                                                 <td>{{$matchup->h_to}}</td>
+                                                <td>{{$matchup->home_score}}</td>@break
                                             </tr>
                                         @endif
                                     @endforeach
@@ -86,6 +87,7 @@
                                                 <td>{{$matchup->a_st}}</td>
                                                 <td>{{$matchup->a_blk}}</td>
                                                 <td>{{$matchup->a_to}}</td>
+                                                <td>{{$matchup->away_score}}</td>@break
                                             </tr>
                                         @endif
                                     @endforeach
