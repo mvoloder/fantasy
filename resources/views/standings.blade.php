@@ -30,14 +30,17 @@
             <th>W - L</th>
             <th>Pct</th>
         </tr>
+
         </thead>
         <tbody>
+        @foreach($standings as $standing)
             <tr>
                 <td><ol><li></li></ol></td>
                 <td>My Team</td>
                 <td>7 - 2</td>
-                <td>0.77778</td>
+                <td>{{$standing->pct}}</td>
             </tr>
+        @endforeach
         </tbody>
     </table>
 

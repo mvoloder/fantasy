@@ -80,18 +80,87 @@ class StandingsController extends Controller
 //        $home = DB::table('matchups')->where('home_user_id', $teamsId);
 //        $away = DB::table('matchups')->where('away_user_id', $teamsId);
 
-        $standings = DB::table('standings')
-            ->join('games', 'week_id', '=', 'games.week_id')
-            ->join('matchups', 'week', '=', 'matchups.week')
-            ->get();
 
-        var_dump($standings);
+        foreach ($matchups as $matchup){
+            foreach ($teams as $team){
+                if (($matchup->home_user_id == $team->user_id) && ($matchup->week == $weekId)){
+                    foreach ($players as $player){
+                        if ($team->player_id == $player->id){
+                            $matchup->h_pts += $player->points * $numberOfGames;
+                            $matchup->h_reb += $player->rebounds * $numberOfGames;
+                            $matchup->h_ast += $player->assists * $numberOfGames;
+                            $matchup->h_st += $player->steals * $numberOfGames;
+                            $matchup->h_blk += $player->blocks * $numberOfGames;
+                            $matchup->h_to += $player->turnovers * $numberOfGames;
+                            $matchup->h_fg += $player->field_goal * $numberOfGames / $numberOfGames;
+                            $matchup->h_ft += ($player->free_throws * $numberOfGames) / $numberOfGames;
+
+                            $matchup->save();
+                        }
+                    }
+                }elseif(($matchup->away_user_id == $team->user_id) && ($matchup->week == $weekId)){
+                    foreach ($players as $player){
+                        if ($team->player_id == $player->id){
+                            $matchup->a_pts += $player->points * $numberOfGames;
+                            $matchup->a_reb += $player->rebounds * $numberOfGames;
+                            $matchup->a_ast += $player->assists * $numberOfGames;
+                            $matchup->a_st += $player->steals * $numberOfGames;
+                            $matchup->a_blk += $player->blocks * $numberOfGames;
+                            $matchup->a_to += $player->turnovers * $numberOfGames;
+                            $matchup->a_fg += ($player->field_goal * $numberOfGames) / $numberOfGames;
+                            $matchup->a_ft += ($player->free_throws * $numberOfGames) / $numberOfGames;
+
+                            $matchup->save();
+                        }
+                    }
+                }
+                if ($matchup->h_pts > $matchup->a_pts){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_pts > $matchup->h_pts) {$matchup->away_score +=1;}
+
+                if ($matchup->h_reb > $matchup->a_reb){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_reb > $matchup->h_reb) {$matchup->away_score +=1;}
+
+                if ($matchup->h_ast > $matchup->a_ast){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_ast > $matchup->h_ast) {$matchup->away_score +=1;}
+
+                if ($matchup->h_st > $matchup->a_st){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_st > $matchup->h_st) {$matchup->away_score +=1;}
+
+                if ($matchup->h_blk > $matchup->a_blk){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_blk > $matchup->h_blk) {$matchup->away_score +=1;}
+
+                if ($matchup->h_to > $matchup->a_to){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_to > $matchup->h_to) {$matchup->away_score +=1;}
+
+                if ($matchup->h_ft > $matchup->a_ft){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_ft > $matchup->h_ft) {$matchup->away_score +=1;}
+
+                if ($matchup->h_fg > $matchup->a_fg){
+                    $matchup->home_score += 1;
+                }elseif($matchup->a_fg > $matchup->h_fg) {$matchup->away_score +=1;}
+
+                $standings = new Standings();
+
+
+                $standings->team_id = $team->id;
+                $standings->league_id = $leagueMapId;
+                $standings->matchup_id = $matchup->id;
+                $standings->pct = ($matchup->home_score / 8);
+
+            }
+            $standings->save();
+        }
 
 
 
-
-
-        return redirect()->route('standings');
+        return redirect()->back();
     }
 
     /**

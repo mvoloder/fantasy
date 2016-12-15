@@ -10,7 +10,6 @@ class Standings extends Model
 
         'id',
         'league_id',
-        'user_id',
         'matchup_id',
         'team_id',
         'wins',
