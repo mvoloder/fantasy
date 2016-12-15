@@ -42,7 +42,6 @@ class TeamController extends Controller
         $playersId = [];
         foreach ($players as $player){
             $playersId[] = $player->id;
-
         }
 
         $teamsId = [];
@@ -54,6 +53,7 @@ class TeamController extends Controller
 
         //output users picks
         $teamMappings = Team::where('user_id', $user)->where('league_id', $leagueMapId)->get();
+
         $playerIds = [];
         foreach ($teamMappings as $teamMapping){
             $playerIds[] = $teamMapping->player_id;

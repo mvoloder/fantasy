@@ -92,6 +92,7 @@
 
     @yield('content')
     <form class="form-horizontal" role="form" method="POST" action="/draft">
+        {{csrf_field()}}
         {{-- Submit pick draft button --}}
     <div class="container">
         <div class="col-md" align="center">
@@ -162,6 +163,8 @@
             </div>
         </div>
     </div>
+        <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
+        <input type="hidden" value="{{$leagueId}}" name="league_id">
     </form>
 </div>
 

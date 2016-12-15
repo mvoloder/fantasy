@@ -36,5 +36,8 @@ class League extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-
+    public function team()
+    {
+        return $this->hasMany('App\Team');
+    }
 }

@@ -84,6 +84,7 @@ class HomeController extends Controller
 
         //get exact number of teams in the league
         $total_teams = count($teams);
+
         //define total rounds and number of matches per round
         $total_rounds = 5; //(fixed for now)
         $matchesPerRound = $total_teams / 2;

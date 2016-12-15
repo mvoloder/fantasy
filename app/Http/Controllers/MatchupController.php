@@ -106,20 +106,10 @@ class MatchupController extends Controller
             $playerIds[] = $player->id;
         }
 
-
-        foreach ($matchups as $matchup){
-//            $matchIds[] = $matchup->match;
-//            $weekIds[] = $matchup->week;
-            if (($round == $matchup->week) && ($match == $matchup->match)){
-
-            }
-        }
-
         $gamesId = [];
         foreach ($weeks as $week){
             $gamesId[] = $week->games;
         }
-        var_dump($gamesId);
 
         return view('matchup', compact('gamesId', 'weeks', 'players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts'));
     }

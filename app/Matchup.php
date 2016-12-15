@@ -34,8 +34,13 @@ class Matchup extends Model
         'away_score',
     ];
 
-//    public function league()
-//    {
-//        return $this->belongsTo('App\League', 'league_id');
-//    }
+    public function league()
+    {
+        return $this->belongsTo('App\League', 'league_id');
+    }
+
+    public function week()
+    {
+        return $this->belongsToMany('App\Week', 'week');
+    }
 }

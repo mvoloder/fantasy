@@ -20,8 +20,6 @@ class Player extends Model
         'steals',
         'field_goal',
         'free_throw',
-        'week_id',
-        'game_id',
 
     ];
 

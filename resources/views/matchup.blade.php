@@ -3,18 +3,6 @@
 @section('content')
 
 
-    <div class="container">
-        <div class="col-md-8 col-offset-4">
-            @foreach($weeks as $week)
-                @if($week->id == $round)
-                    @for($i = 0; $i < ($week->games); $i++)
-                        <button class="btn btn-primary" type="button" id="gameId">Simulate game {{$i + 1}}</button>
-                    @endfor
-                @endif
-            @endforeach
-        </div>
-    </div>
-    <hr>
     @foreach($matchups as $matchup)
         @if(($matchup->week == $round) && ($matchup->match == $match))
             <div class="container">

@@ -17,7 +17,6 @@ class MessageBoardController extends Controller
      */
     public function index()
     {
-//        $user_leagues = UserLeague::all();
         $messageBoards = MessageBoard::all();
 
         return view('messageboard.messageboard', compact('messageBoards'))/*, ['leagueId' => $user_leagues->league_id]))*/;

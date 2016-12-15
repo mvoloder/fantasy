@@ -27,4 +27,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+
+    public function league()
+    {
+        return $this->hasMany('App\League');
+    }
+
+    public function team()
+    {
+        return $this->hasMany('App\Team');
+    }
 }
