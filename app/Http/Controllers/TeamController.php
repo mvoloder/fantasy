@@ -35,6 +35,7 @@ class TeamController extends Controller
         foreach ($leagues as $league){
             $number_of_teams = $league->number_of_teams;
             $leagueId = $league->id;
+            $playerNumber = $league->playerNumber;
 
             $arr = range(1, $number_of_teams);
         }
@@ -61,6 +62,11 @@ class TeamController extends Controller
 
 
         $spiller = Player::whereIn('id', $playerIds)->get();
+
+        //if max number of players per team drafted -> redirect to league page
+        if (count($spiller) == $playerNumber){
+            return redirect()->action('MatchupController@league');
+        }
 
 
         return view('draft.draft', compact('players', 'arr', 'leagueId', 'undrafted', 'spiller'));
