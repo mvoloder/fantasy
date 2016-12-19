@@ -12,16 +12,18 @@ class Invite extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $test;
+    public $id;
+    public $pass;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($test)
+    public function __construct($id, $pass)
     {
-        $this->test = $test;
+        $this->id = $id;
+        $this->pass  = $pass;
     }
 
     /**

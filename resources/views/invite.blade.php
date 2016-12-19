@@ -12,7 +12,8 @@
 
 
             <input type="email" name="email" placeholder="mail address">
-            <input type="text" name="test" placeholder="test">
+            <input type="text" name="id" placeholder="id">
+            <input type="text" name="pass" placeholder="pass">
             <button type="submit">Send mail</button>
             {{csrf_field()}}
 

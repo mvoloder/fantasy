@@ -51,16 +51,7 @@ class LeagueController extends Controller
                 'league_name' => 'required|unique:leagues',
                 'league_password' => 'required|min:4',
                 'number_of_teams' => 'required',
-                'point_guard' => 'required',
-                'shooting_guard' => 'required',
-                'guard' => 'required',
-                'small_forward' => 'required',
-                'forward' => 'required',
-                'power_forward' => 'required',
-                'center' => 'required',
-                'utility' => 'required',
-                'bench' => 'required',
-                'draft_time' => 'required'
+                'playerNumber' => 'required',
 
             ]
         );
@@ -77,18 +68,9 @@ class LeagueController extends Controller
             $leagues->league_name = Input::get("league_name");
             $leagues->league_password = Input::get("league_password");
             $leagues->number_of_teams = Input::get("number_of_teams");
-            $leagues->point_guard = Input::get("point_guard");
-            $leagues->shooting_guard = Input::get("shooting_guard");
-            $leagues->guard = Input::get("guard");
-            $leagues->small_forward = Input::get("small_forward");
-            $leagues->forward = Input::get("forward");
-            $leagues->power_forward = Input::get("power_forward");
-            $leagues->center = Input::get("center");
-            $leagues->utility = Input::get("utility");
-            $leagues->bench = Input::get("bench");
-            $leagues->draft_time = Input::get("draft_time");
+            $leagues->playerNumber = Input::get("playerNumber");
             $leagues->user_id = Input::get('user_id');
-            $leagues->roster = ($leagues->point_guard + $leagues->shooting_guard + $leagues->guard + $leagues->small_forward + $leagues->forward + $leagues->power_forward + $leagues->center + $leagues->utility + $leagues->bench);
+
 
             //create new league
             $leagues->save();

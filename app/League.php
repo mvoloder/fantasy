@@ -14,20 +14,8 @@ class League extends Model
         'league_name',
         'league_password',
         'number_of_teams',
-        'point_guard',
-        'shooting_guard',
-        'guard',
-        'small_forward',
-        'forward',
-        'power_forward',
-        'center',
-        'utility',
-        'bench',
-        'draft_time',
-        'roster',
-        'user_id'
-
-
+        'playerNumber',
+        'user_id',
     ];
 
 

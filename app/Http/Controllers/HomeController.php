@@ -68,6 +68,8 @@ class HomeController extends Controller
 
     public function joinleague()
     {
+        $leagues = League::all();
+
         return view('joinleague');
 
     }

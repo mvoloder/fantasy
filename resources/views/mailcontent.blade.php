@@ -9,6 +9,7 @@
 </head>
 <body>
 <h3>League id and password</h3>
-<p>{{ $test }}</p>
+<p>your league id : {{ $id }}</p>
+<p>your league password : {{ $pass }}</p>
 </body>
 </html>

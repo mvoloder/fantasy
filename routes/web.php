@@ -34,11 +34,11 @@ Route::get('players', 'MatchupController@players');
 /**
  * Send Invite mail
  */
-
+//Route::get('invite', 'HomeController@invite');
 Route::post('nba/team/invite', function (\Illuminate\Http\Request $request, \Illuminate\Mail\Mailer $mailer) {
     $mailer->to($request->input('email'))
-        ->send(new \App\Mail\Invite($request->input('test')));
-    return redirect()->back();
+        ->send(new \App\Mail\Invite($request->input('id'), $request->input('pass')));
+    return redirect('nba');
 })->name('nba');
 
 

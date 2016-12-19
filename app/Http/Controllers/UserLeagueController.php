@@ -54,6 +54,9 @@ class UserLeagueController extends Controller
      */
     public function store(Request $request)
     {
+        $leagues = League::all();
+
+
 
         $validator = Validator::make(
             $request->all(),
@@ -69,12 +72,17 @@ class UserLeagueController extends Controller
 
         } else {
 
-            $user_leagues = new UserLeague();
+            foreach ($leagues as $league){
+                $user_leagues = new UserLeague();
 
-            $user_leagues->league_password = Input::get('league_password');
-            $user_leagues->user_id = Input::get('user_id');
-            $user_leagues->league_id = Input::get('league_id');
+                $user_leagues->league_password = Input::get('league_password');
+                $user_leagues->user_id = Input::get('user_id');
+                $user_leagues->league_id = Input::get('league_id');
 
+                if (($league->id == $user_leagues->league_id) && ($league->password == $user_leagues->league_password)){
+                    $user_leagues->save();
+                }
+            }
         }
 //
 //        $leagues = League::all();

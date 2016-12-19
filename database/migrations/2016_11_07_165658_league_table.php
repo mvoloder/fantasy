@@ -19,17 +19,7 @@ class LeagueTable extends Migration
             $table->string('league_name');
             $table->string('league_password');
             $table->integer('number_of_teams');
-            $table->integer('point_guard');
-            $table->integer('shooting_guard');
-            $table->integer('guard');
-            $table->integer('small_forward');
-            $table->integer('forward');
-            $table->integer('power_forward');
-            $table->integer('center');
-            $table->integer('utility');
-            $table->integer('bench');
-            $table->string('draft_time');
-            $table->integer('roster');
+            $table->integer('playerNumber');
             $table->timestamps();
 
         });

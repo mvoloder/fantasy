@@ -62,83 +62,17 @@
                             </div>
 
                             <div class="form-horizontal">
-                                <label for="roster_postitions" class="col-md-4 control-label">Select roster
-                                    positions</label>
-
-                                <label class="col-xs-pull-2">PG</label>
-                                <select class="selectpicker" name="point_guard">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                <label class="col-xs-pull-4 col-xs-offset-1">Number of players</label>
+                                <select class="selectpicker" name="playerNumber">
+                                    <option>4</option>
+                                    <option>6</option>
+                                    <option>8</option>
+                                    <option>10</option>
+                                    <option>12</option>
+                                    <option>14</option>
+                                    <option>16</option>
                                 </select>
 
-                                <label class="col-xs-pull-2">SG</label>
-                                <select class="selectpicker" name="shooting_guard">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">G</label>
-                                <select class="selectpicker" name="guard">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">SF</label>
-                                <select class="selectpicker" name="small_forward">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">F</label>
-                                <select class="selectpicker" name="forward">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">PF</label>
-                                <select class="selectpicker" name="power_forward">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">C</label>
-                                <select class="selectpicker" name="center">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">Utility</label>
-                                <select class="selectpicker" name="utility">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                                <label class="col-xs-pull-2">Bench</label>
-                                <select class="selectpicker" name="bench">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="draft_time" class="col-md-4 control-label">Draft time</label>
-                                <select name="draft_time" class="selectpicker">
-                                    <option>0:30</option>
-                                    <option>0:45</option>
-                                    <option>1:00</option>
-                                    <option>1:15</option>
-                                    <option>1:30</option>
-                                </select>
                             </div>
 
                             <input type="hidden" value="{{Auth::User()->id}}" name="user_id">
