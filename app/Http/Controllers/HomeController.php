@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 
 use App\Matchup;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -50,7 +51,7 @@ class HomeController extends Controller
             }
         }
 
-        return view('nba', compact('user_leagues'));
+        return view('nba', compact('user_leagues', 'tm_sett'));
     }
 
     /**
@@ -68,10 +69,20 @@ class HomeController extends Controller
 
     public function joinleague()
     {
-        $leagues = League::all();
 
         return view('joinleague');
+    }
 
+    public function joinleagueCheck()
+    {
+        $leagues = League::all();
+
+        foreach ($leagues as $league){
+            if (($league->id == Input::get('league_id')) && ($league->password == Input::get('league_password'))){
+
+            } return redirect()->action('TeamSettingsController@index');
+        }
+        return view('joinleague');
     }
 
     public function progress()
