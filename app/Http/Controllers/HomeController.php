@@ -78,9 +78,6 @@ class HomeController extends Controller
         $leaguePass = League::where('league_password', Input::get('league_password'))->first();
         $leagueName = League::where('league_name', Input::get('league_name'))->first();
         $leagueId = League::find(1);
-        var_dump($leagueId);
-        var_dump($leaguePass);
-        var_dump($leagueName);
 
         if (is_null($leaguePass) && is_null($leagueName)){
             return view('joinleague');
