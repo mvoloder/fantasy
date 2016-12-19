@@ -75,14 +75,17 @@ class HomeController extends Controller
 
     public function joinleagueCheck()
     {
-        $leagues = League::all();
+        $leaguePass = League::where('league_password', Input::get('league_password'))->first();
+        $leagueName = League::where('league_name', Input::get('league_name'))->first();
+        $leagueId = League::find(1);
+        var_dump($leagueId);
+        var_dump($leaguePass);
+        var_dump($leagueName);
 
-        foreach ($leagues as $league){
-            if (($league->id == Input::get('league_id')) && ($league->password == Input::get('league_password'))){
-
-            } return redirect()->action('TeamSettingsController@index');
+        if (is_null($leaguePass) && is_null($leagueName)){
+            return view('joinleague');
         }
-        return view('joinleague');
+        return view('team', ['leagueId' => count($leagueId)]);
     }
 
     public function progress()
