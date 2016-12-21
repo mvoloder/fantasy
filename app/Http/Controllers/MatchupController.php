@@ -96,7 +96,7 @@ class MatchupController extends Controller
 
         foreach ($weeks as $week){
             if($week->games === $kik){
-                var_dump($week->games);
+                $piz = $week->games;
             }
         }
 
