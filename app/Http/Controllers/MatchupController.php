@@ -86,13 +86,19 @@ class MatchupController extends Controller
         $round = Route::current()->getParameter('week');
         $match = Route::current()->getParameter('match');
 
-
         $teams = Team::all();
         $players = Player::all();
         $matchups = Matchup::all();
         $t_setts = TeamSettings::all();
         $weeks = Week::all();
 
+        $kik = intval($round);
+
+        foreach ($weeks as $week){
+            if($week->games === $kik){
+                var_dump($week->games);
+            }
+        }
 
         //get all drafted players by user id
         $userMaps = [];
@@ -111,7 +117,7 @@ class MatchupController extends Controller
             $gamesId[] = $week->games;
         }
 
-        return view('matchup', compact('gamesId', 'weeks', 'players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts'));
+        return view('matchup', compact('gamesId', 'weeks', 'players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts', 'piz'));
     }
 
     /**

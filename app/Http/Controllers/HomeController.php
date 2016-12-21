@@ -73,16 +73,34 @@ class HomeController extends Controller
         return view('joinleague');
     }
 
+
     public function joinleagueCheck()
     {
         $leaguePass = League::where('league_password', Input::get('league_password'))->first();
         $leagueName = League::where('league_name', Input::get('league_name'))->first();
-        $leagueId = League::find(1);
+        $leagues = League::all();
+        $t_setts = TeamSettings::all();
+        $user = Auth::id();
+
+        foreach($leagues as $league){
+            if ((Input::get('league_password') == $league->league_password) && (Input::get('league_name') == $league->league_name)){
+                $biz = $league->id;
+            }
+        }
+
+        foreach ($t_setts as $t_sett){
+            if (($t_sett->user_id == $user) && ($t_sett->league_id == $biz)){
+                return view('joinleague');
+            }
+        }
+
 
         if (is_null($leaguePass) && is_null($leagueName)){
             return view('joinleague');
         }
-        return view('team', ['leagueId' => count($leagueId)]);
+
+
+        return view('team', ['leagueId' => $biz]);
     }
 
     public function progress()

@@ -25,7 +25,7 @@ Route::resource('nba/team', 'TeamSettingsController');
 Route::resource('team', 'MainLeagueController');
 Route::get('matchups', 'MatchupController@index');
 Route::get('matchup/{week}/{match}', 'MatchupController@matchup');
-Route::get('league/{id}', 'MatchupController@league');
+Route::get('league', 'MatchupController@league');
 Route::resource('messageboard', 'MessageBoardController');
 Route::resource('standings', 'StandingsController');
 Route::get('players', 'MatchupController@players');

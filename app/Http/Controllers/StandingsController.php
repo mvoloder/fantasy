@@ -65,6 +65,8 @@ class StandingsController extends Controller
         $leagueMap = League::find(1);
         $leagueMapId = $leagueMap->id;
         $matchups = Matchup::all();
+        $leagues = League::all();
+
 
         //get number of games by week
         $weekId = Input::get('simulate');
@@ -74,11 +76,7 @@ class StandingsController extends Controller
         foreach ($teams as $team){
             $teamsId[] = $team->player_id;
         }
-//        var_dump($teamsId);
 
-
-//        $home = DB::table('matchups')->where('home_user_id', $teamsId);
-//        $away = DB::table('matchups')->where('away_user_id', $teamsId);
 
 
         foreach ($matchups as $matchup){
@@ -92,7 +90,7 @@ class StandingsController extends Controller
                             $matchup->h_st += $player->steals * $numberOfGames;
                             $matchup->h_blk += $player->blocks * $numberOfGames;
                             $matchup->h_to += $player->turnovers * $numberOfGames;
-                            $matchup->h_fg += $player->field_goal * $numberOfGames / $numberOfGames;
+                            $matchup->h_fg += ($player->field_goal * $numberOfGames) / $numberOfGames;
                             $matchup->h_ft += ($player->free_throws * $numberOfGames) / $numberOfGames;
 
                             $matchup->save();
@@ -153,9 +151,9 @@ class StandingsController extends Controller
                 $standings->league_id = $leagueMapId;
                 $standings->matchup_id = $matchup->id;
                 $standings->pct = ($matchup->home_score / 8);
-
+                $standings->save();
             }
-            $standings->save();
+//            $standings->save();
         }
 
 
