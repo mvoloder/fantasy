@@ -94,10 +94,9 @@ class MatchupController extends Controller
 
         $kik = intval($round);
 
+        $nmbGm = [];
         foreach ($weeks as $week){
-            if($week->games === $kik){
-                $piz = $week->games;
-            }
+            $nmbGm[] = $week->games;
         }
 
         //get all drafted players by user id
@@ -117,7 +116,7 @@ class MatchupController extends Controller
             $gamesId[] = $week->games;
         }
 
-        return view('matchup', compact('gamesId', 'weeks', 'players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts', 'piz'));
+        return view('matchup', compact('gamesId', 'weeks', 'players','userMaps', 'matchups', 'round', 'match', 'teams', 't_setts', 'nmbGm'));
     }
 
     /**

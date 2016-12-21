@@ -125,7 +125,7 @@
                                                 {{--Home team--}}
 
                                                 <td>{{$player->first_name . " " . $player->last_name}}</td>
-                                                <td>{{$matchup->h_fg}}</td>
+                                                <td>{{($player->field_goal)*}}</td>
                                                 <td>{{$matchup->h_ft}}</td>
                                                 <td>{{$matchup->h_pts}}</td>
                                                 <td>{{$matchup->h_reb}}</td>
