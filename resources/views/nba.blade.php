@@ -22,7 +22,7 @@
             @foreach($tm_sett as $tm_set)
                 @if(Auth::User()->id == $tm_set->user_id)
                 <ol>
-                <li><a href="{{url('league', $tm_set->league_id)}}" class="btn btn-default btn-primary">{{$tm_set->team_name}}</a></li>
+                <li><a href="{{url('league'/*, $tm_set->league_id*/)}}" class="btn btn-default btn-primary">{{$tm_set->team_name}}</a></li>
                 </ol>
                 @endif
             @endforeach

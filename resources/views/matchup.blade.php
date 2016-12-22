@@ -9,7 +9,7 @@
                 <table class="table table-hover">
                     <thead>
                     @foreach($t_setts as $t_sett)
-                        @if($matchup->home_user_id ==$t_sett->user_id)
+                        @if($matchup->home_user_id == $t_sett->user_id)
                             <tr>
                                 <th><h2>{{$t_sett->team_name}}</h2></th>
                                 @elseif($matchup->away_user_id == $t_sett->user_id )
@@ -125,7 +125,7 @@
                                                 {{--Home team--}}
 
                                                 <td>{{$player->first_name . " " . $player->last_name}}</td>
-                                                <td>{{($player->field_goal)*}}</td>
+                                                <td>{{$matchup->h_fg}}</td>
                                                 <td>{{$matchup->h_ft}}</td>
                                                 <td>{{$matchup->h_pts}}</td>
                                                 <td>{{$matchup->h_reb}}</td>
