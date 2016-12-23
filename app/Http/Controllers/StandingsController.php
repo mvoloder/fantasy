@@ -32,11 +32,13 @@ class StandingsController extends Controller
     {
         //dynamically set simulate week buttons
         $weeks = Week::all();
+        $matchups = Matchup::all();
+
 
         $standings = Standings::all();
         $t_setts = TeamSettings::all();
 
-        return view('standings', compact('standings', 'weeks', 't_setts'));
+        return view('standings', compact('standings', 'weeks', 't_setts', 'matchups', 'home'));
     }
 
     /**
@@ -81,12 +83,12 @@ class StandingsController extends Controller
         foreach ($teams as $team) {
             foreach ($matchups as $matchup) {
                 $standings = new Standings();
+                $standings->league_id = $leagueMapId;
+                $standings->matchup_id = $matchup->id;
 
                 if (($matchup->home_user_id == $team->user_id) && ($matchup->week == $weekId)) {
-
                     $standings->team_id = $team->id;
-                    $standings->league_id = $leagueMapId;
-                    $standings->matchup_id = $matchup->id;
+//                    $standings->save();
 
                     foreach ($players as $player) {
                         if ($team->player_id == $player->id) {
@@ -99,14 +101,18 @@ class StandingsController extends Controller
                             $matchup->h_fg = ($player->field_goal * $numberOfGames) / $numberOfGames;
                             $matchup->h_ft = ($player->free_throws * $numberOfGames) / $numberOfGames;
 
-//                            $matchup->save();
+                            $standings->wins = $matchup->home_score;
+                            $standings->loses = (8 - $matchup->home_score);
+                            $standings->pct = ($matchup->home_score / 8);
+
+
+                            $matchup->save();
                         }
                     }
                 } elseif (($matchup->away_user_id == $team->user_id) && ($matchup->week == $weekId)) {
 
                     $standings->team_id = $team->id;
-                    $standings->league_id = $leagueMapId;
-                    $standings->matchup_id = $matchup->id;
+//                    $standings->save();
 
                     foreach ($players as $player) {
                         if ($team->player_id == $player->id) {
@@ -119,16 +125,23 @@ class StandingsController extends Controller
                             $matchup->a_fg = ($player->field_goal * $numberOfGames) / $numberOfGames;
                             $matchup->a_ft = ($player->free_throws * $numberOfGames) / $numberOfGames;
 
-//                            $matchup->save();
+                            $standings->wins = $matchup->away_score;
+                            $standings->loses = (8 - $matchup->away_score);
+                            $standings->pct = ($matchup->away_score / 8);
+
+
+                            $matchup->save();
                         }
                     }
                 }
-
-                $matchup->save();
-                $standings->save();
-
+//                $matchup->save();
             }
         }
+
+//        $standings = new  Standings();
+//
+
+
 
 
         return redirect()->back();
@@ -153,7 +166,7 @@ class StandingsController extends Controller
      */
     public function edit($id)
     {
-        return view('standings');
+//        return view('standings');
     }
 
     /**
@@ -165,12 +178,12 @@ class StandingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $standings = Standings::findOrFail($id);
-
-        $input = $request->all();
-        $standings->fill($input)->save();
-
-        return redirect()->back();
+//        $standings = Standings::findOrFail($id);
+//
+//        $input = $request->all();
+//        $standings->fill($input)->save();
+//
+//        return redirect()->back();
     }
 
     /**

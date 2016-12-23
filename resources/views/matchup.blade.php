@@ -57,7 +57,8 @@
                                                 <td>{{$matchup->h_st}}</td>
                                                 <td>{{$matchup->h_blk}}</td>
                                                 <td>{{$matchup->h_to}}</td>
-                                                <td>{{$matchup->home_score}}</td>@break
+                                                <td>{{$matchup->home_score}}</td><input hidden value="{{$matchup->home_score}}" name="home">@break
+
                                             </tr>
                                         @endif
                                     @endforeach
@@ -75,7 +76,7 @@
                                                 <td>{{$matchup->a_st}}</td>
                                                 <td>{{$matchup->a_blk}}</td>
                                                 <td>{{$matchup->a_to}}</td>
-                                                <td>{{$matchup->away_score}}</td>@break
+                                                <td>{{$matchup->away_score}}</td><input hidden value="{{$matchup->away_score}}" name="away">@break
                                             </tr>
                                         @endif
                                     @endforeach

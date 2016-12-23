@@ -92,7 +92,6 @@ class MatchupController extends Controller
         $t_setts = TeamSettings::all();
         $weeks = Week::all();
 
-
         $nmbGm = [];
         foreach ($weeks as $week){
             $nmbGm[] = $week->games;
@@ -121,49 +120,49 @@ class MatchupController extends Controller
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_pts > $matchup->h_pts) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_reb > $matchup->a_reb) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_reb > $matchup->h_reb) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_ast > $matchup->a_ast) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_ast > $matchup->h_ast) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_st > $matchup->a_st) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_st > $matchup->h_st) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_blk > $matchup->a_blk) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_blk > $matchup->h_blk) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_to < $matchup->a_to) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_to < $matchup->h_to) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_ft > $matchup->a_ft) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_ft > $matchup->h_ft) {
                     $matchup->away_score += 1;
-                } else break;
+                }
 
                 if ($matchup->h_fg > $matchup->a_fg) {
                     $matchup->home_score += 1;
                 } elseif ($matchup->a_fg > $matchup->h_fg) {
                     $matchup->away_score += 1;
-                } else break;
+                }
         }
 
 

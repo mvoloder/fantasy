@@ -58,7 +58,7 @@
                             <a class="navbar-brand">Your league</a>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li><a href="/standings">Standings</a></li>
+                            <li><a href="/standings">Simulate weeks</a></li>
                             <li><a href="/team">My Team</a></li>
                             <li><a href="/matchups">Matchups</a></li>
                             <li><a href="/messageboard">Message Board</a></li>
